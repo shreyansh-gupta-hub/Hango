@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Manager - HANGO Owner Portal</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/owner-portal.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="owner-portal">
+    <div class="coffee-grain-bg"></div>
+
+    <!-- Sidebar -->
+    <aside class="owner-sidebar-new">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <span class="owner-badge">Owner Portal</span>
+        </div>
+        
+        <nav class="sidebar-nav-new">
+            <a href="owner-dashboard-new.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="owner-cafes.html" class="nav-item">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">My Cafés</span>
+            </a>
+            <a href="owner-add-cafe-new.html" class="nav-item">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Add Café</span>
+            </a>
+            <a href="owner-analytics-new.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Analytics</span>
+            </a>
+            <a href="owner-gallery-new.html" class="nav-item active">
+                <span class="nav-icon">🖼️</span>
+                <span class="nav-text">Gallery</span>
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="owner-settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="owner-profile-mini">
+                <div class="profile-avatar-mini">JD</div>
+                <div class="profile-info-mini">
+                    <span class="profile-name-mini">John's Café</span>
+                    <span class="profile-status">Verified</span>
+                </div>
+            </div>
+            <button class="logout-btn-mini">
+                <span>🚪</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="owner-main-new">
+        <header class="dashboard-header-new">
+            <div class="header-left">
+                <h1 class="page-title">Gallery Manager</h1>
+                <p class="page-subtitle">Manage your café images</p>
+            </div>
+            <div class="header-right">
+                <div class="sync-indicator">
+                    <div class="sync-pulse"></div>
+                    <span class="sync-text">Live</span>
+                    <span class="sync-time">Synced 30s ago</span>
+                </div>
+                <button class="btn-primary-new" id="uploadBtn">
+                    <span>📸</span>
+                    <span>Upload Images</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Sync Notice -->
+        <div class="sync-banner">
+            <div class="sync-banner-icon">🖼️</div>
+            <div class="sync-banner-content">
+                <h3>Images Sync to User Portal</h3>
+                <p>All changes are immediately visible to users browsing your cafés</p>
+            </div>
+        </div>
+
+        <!-- Gallery Filter -->
+        <div class="gallery-filter-bar">
+            <div class="filter-group">
+                <button class="filter-btn active">All Images (24)</button>
+                <button class="filter-btn">Artisan Brew (12)</button>
+                <button class="filter-btn">Cozy Corner (8)</button>
+                <button class="filter-btn">Riverside (4)</button>
+            </div>
+            <div class="view-toggle">
+                <button class="view-btn active" data-view="masonry">
+                    <span>⊞</span>
+                </button>
+                <button class="view-btn" data-view="grid">
+                    <span>▦</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Gallery Grid (Masonry Style) -->
+        <div class="gallery-masonry" id="galleryGrid">
+            <div class="gallery-card-new" style="--row-span: 2">
+                <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600" alt="Gallery">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-info">
+                        <h4>Artisan Brew House</h4>
+                        <p>Interior Shot</p>
+                    </div>
+                    <div class="gallery-card-actions">
+                        <button class="gallery-action-btn replace">
+                            <span>🔄</span>
+                            <span>Replace</span>
+                        </button>
+                        <button class="gallery-action-btn delete">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>Live on User Portal</span>
+                </div>
+            </div>
+
+            <div class="gallery-card-new" style="--row-span: 1">
+                <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600" alt="Gallery">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-info">
+                        <h4>Cozy Corner Café</h4>
+                        <p>Exterior View</p>
+                    </div>
+                    <div class="gallery-card-actions">
+                        <button class="gallery-action-btn replace">
+                            <span>🔄</span>
+                            <span>Replace</span>
+                        </button>
+                        <button class="gallery-action-btn delete">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>Live on User Portal</span>
+                </div>
+            </div>
+
+            <div class="gallery-card-new" style="--row-span: 2">
+                <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=600" alt="Gallery">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-info">
+                        <h4>Artisan Brew House</h4>
+                        <p>Coffee Art</p>
+                    </div>
+                    <div class="gallery-card-actions">
+                        <button class="gallery-action-btn replace">
+                            <span>🔄</span>
+                            <span>Replace</span>
+                        </button>
+                        <button class="gallery-action-btn delete">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>Live on User Portal</span>
+                </div>
+            </div>
+
+            <div class="gallery-card-new" style="--row-span: 1">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600" alt="Gallery">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-info">
+                        <h4>Riverside Roastery</h4>
+                        <p>Roasting Process</p>
+                    </div>
+                    <div class="gallery-card-actions">
+                        <button class="gallery-action-btn replace">
+                            <span>🔄</span>
+                            <span>Replace</span>
+                        </button>
+                        <button class="gallery-action-btn delete">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>Live on User Portal</span>
+                </div>
+            </div>
+
+            <div class="gallery-card-new" style="--row-span: 2">
+                <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=600" alt="Gallery">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-info">
+                        <h4>Cozy Corner Café</h4>
+                        <p>Seating Area</p>
+                    </div>
+                    <div class="gallery-card-actions">
+                        <button class="gallery-action-btn replace">
+                            <span>🔄</span>
+                            <span>Replace</span>
+                        </button>
+                        <button class="gallery-action-btn delete">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>Live on User Portal</span>
+                </div>
+            </div>
+
+            <div class="gallery-card-new" style="--row-span: 1">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600" alt="Gallery">
+                <div class="gallery-card-overlay">
+                    <div class="gallery-card-info">
+                        <h4>Artisan Brew House</h4>
+                        <p>Menu Board</p>
+                    </div>
+                    <div class="gallery-card-actions">
+                        <button class="gallery-action-btn replace">
+                            <span>🔄</span>
+                            <span>Replace</span>
+                        </button>
+                        <button class="gallery-action-btn delete">
+                            <span>🗑️</span>
+                            <span>Delete</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="live-badge">
+                    <span class="live-dot"></span>
+                    <span>Live on User Portal</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Delete Confirmation Modal -->
+    <div class="modal-overlay" id="deleteModal">
+        <div class="modal-content-new">
+            <div class="modal-icon warning">⚠️</div>
+            <h2 class="modal-title">Delete Image?</h2>
+            <p class="modal-message">This image will be removed from the user portal immediately</p>
+            <div class="modal-actions">
+                <button class="btn-secondary-new" onclick="closeModal()">Cancel</button>
+                <button class="btn-danger" onclick="confirmDelete()">Delete</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Upload Modal -->
+    <div class="modal-overlay" id="uploadModal">
+        <div class="modal-content-new upload-modal">
+            <h2 class="modal-title">Upload Images</h2>
+            <div class="upload-zone-new" id="modalUploadZone">
+                <div class="upload-icon-new">📸</div>
+                <h3 class="upload-title">Drag & Drop Images</h3>
+                <p class="upload-subtitle">or click to browse</p>
+                <input type="file" id="modalImageUpload" multiple accept="image/*" hidden>
+            </div>
+            <div class="modal-actions">
+                <button class="btn-secondary-new" onclick="closeUploadModal()">Cancel</button>
+                <button class="btn-primary-new">Upload & Sync</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/owner-gallery.js"></script>
+</body>
+</html>

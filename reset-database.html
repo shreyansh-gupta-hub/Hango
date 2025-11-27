@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Database - HANGO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3e50 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: #ffffff;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background: rgba(42, 56, 75, 0.6);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #00d4ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 1rem;
+            letter-spacing: -1px;
+        }
+
+        .subtitle {
+            color: #b8c5d6;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .warning-box {
+            background: rgba(255, 193, 7, 0.1);
+            border: 2px solid rgba(255, 193, 7, 0.5);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .warning-box h3 {
+            color: #ffc107;
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .warning-box p {
+            color: #b8c5d6;
+            line-height: 1.6;
+        }
+
+        .info-box {
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-box h3 {
+            color: #00d4ff;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .info-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-box li {
+            color: #b8c5d6;
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .info-box li i {
+            color: #00d4ff;
+            font-size: 1.2rem;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1.25rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #00d4ff, #4dd4ff);
+            color: #1a2332;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0, 212, 255, 0.5);
+        }
+
+        .btn-primary:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(0, 212, 255, 0.1);
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(0, 212, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .status-box {
+            background: rgba(42, 56, 75, 0.8);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 15px;
+            padding: 1.5rem;
+            min-height: 200px;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.875rem;
+            line-height: 1.8;
+        }
+
+        .status-box:empty::before {
+            content: 'Ready to reset database...';
+            color: #b8c5d6;
+            font-style: italic;
+        }
+
+        .log-entry {
+            padding: 0.25rem 0;
+            color: #b8c5d6;
+        }
+
+        .log-entry.success {
+            color: #4ade80;
+        }
+
+        .log-entry.error {
+            color: #ff6b6b;
+        }
+
+        .log-entry.info {
+            color: #00d4ff;
+        }
+
+        .spinner {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(0, 212, 255, 0.3);
+            border-top-color: #00d4ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .back-link {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .back-link a {
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .back-link a:hover {
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            .button-group {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-database"></i> Database Reset</h1>
+        <p class="subtitle">Clear existing cafés and add example data</p>
+
+        <div class="warning-box">
+            <h3><i class="fas fa-exclamation-triangle"></i> Warning</h3>
+            <p>This action will permanently delete all existing cafés from the database and replace them with example data. This cannot be undone!</p>
+        </div>
+
+        <div class="info-box">
+            <h3><i class="fas fa-info-circle"></i> What will be added:</h3>
+            <ul>
+                <li><i class="fas fa-check-circle"></i> 8 example cafés with complete data</li>
+                <li><i class="fas fa-check-circle"></i> Real NYC locations with coordinates</li>
+                <li><i class="fas fa-check-circle"></i> Ratings, reviews, and descriptions</li>
+                <li><i class="fas fa-check-circle"></i> Operating hours and amenities</li>
+                <li><i class="fas fa-check-circle"></i> High-quality images from Unsplash</li>
+                <li><i class="fas fa-check-circle"></i> Tags and price ranges</li>
+            </ul>
+        </div>
+
+        <div class="button-group">
+            <button class="btn btn-primary" id="resetBtn" onclick="performReset()">
+                <i class="fas fa-sync-alt"></i>
+                <span>Reset Database</span>
+            </button>
+            <button class="btn btn-secondary" onclick="window.location.href='index.html'">
+                <i class="fas fa-times"></i>
+                <span>Cancel</span>
+            </button>
+        </div>
+
+        <div class="status-box" id="statusBox"></div>
+
+        <div class="back-link">
+            <a href="index.html"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, getDocs, deleteDoc, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { firebaseConfig } from './scripts/firebase-config.js';
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        const statusBox = document.getElementById('statusBox');
+        const resetBtn = document.getElementById('resetBtn');
+
+        function addLog(message, type = 'info') {
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry ${type}`;
+            logEntry.textContent = message;
+            statusBox.appendChild(logEntry);
+            statusBox.scrollTop = statusBox.scrollHeight;
+        }
+
+        // Example Cafés Data
+        const exampleCafes = [
+            {
+                id: 'cafe-001',
+                name: 'Blue Bottle Coffee',
+                description: 'Artisanal coffee roasted to perfection with a minimalist aesthetic and exceptional service.',
+                address: '450 W 15th St, New York, NY 10011',
+                location: {
+                    lat: 40.7420,
+                    lng: -74.0064
+                },
+                rating: '4.8',
+                reviews: '342',
+                images: ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800'],
+                priceRange: '$$$',
+                tags: ['WiFi', 'Outdoor Seating', 'Specialty Coffee', 'Pastries'],
+                hours: {
+                    monday: '7:00 AM - 7:00 PM',
+                    tuesday: '7:00 AM - 7:00 PM',
+                    wednesday: '7:00 AM - 7:00 PM',
+                    thursday: '7:00 AM - 7:00 PM',
+                    friday: '7:00 AM - 8:00 PM',
+                    saturday: '8:00 AM - 8:00 PM',
+                    sunday: '8:00 AM - 7:00 PM'
+                },
+                amenities: ['WiFi', 'Power Outlets', 'Outdoor Seating', 'Pet Friendly'],
+                featured: true,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-002',
+                name: 'Stumptown Coffee Roasters',
+                description: 'Portland-based roaster known for direct trade beans and expertly crafted espresso drinks.',
+                address: '18 W 29th St, New York, NY 10001',
+                lat: 40.7456,
+                lng: -73.9889,
+                rating: 4.7,
+                reviews: 289,
+                priceRange: '$$',
+                image: 'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800',
+                tags: ['WiFi', 'Cold Brew', 'Espresso Bar', 'Roastery'],
+                hours: {
+                    monday: '6:30 AM - 8:00 PM',
+                    tuesday: '6:30 AM - 8:00 PM',
+                    wednesday: '6:30 AM - 8:00 PM',
+                    thursday: '6:30 AM - 8:00 PM',
+                    friday: '6:30 AM - 9:00 PM',
+                    saturday: '7:00 AM - 9:00 PM',
+                    sunday: '7:00 AM - 8:00 PM'
+                },
+                amenities: ['WiFi', 'Power Outlets', 'Cold Brew', 'Merchandise'],
+                featured: true,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-003',
+                name: 'Intelligentsia Coffee',
+                description: 'Third-wave coffee pioneer offering single-origin beans and innovative brewing methods.',
+                address: '180 Orchard St, New York, NY 10002',
+                lat: 40.7214,
+                lng: -73.9877,
+                rating: 4.9,
+                reviews: 456,
+                priceRange: '$$$',
+                image: 'https://images.unsplash.com/photo-1559305616-3b04e37e3b60?w=800',
+                tags: ['WiFi', 'Specialty Coffee', 'Pour Over', 'Quiet'],
+                hours: {
+                    monday: '7:00 AM - 6:00 PM',
+                    tuesday: '7:00 AM - 6:00 PM',
+                    wednesday: '7:00 AM - 6:00 PM',
+                    thursday: '7:00 AM - 6:00 PM',
+                    friday: '7:00 AM - 7:00 PM',
+                    saturday: '8:00 AM - 7:00 PM',
+                    sunday: '8:00 AM - 6:00 PM'
+                },
+                amenities: ['WiFi', 'Quiet Space', 'Pour Over Bar', 'Coffee Classes'],
+                featured: true,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-004',
+                name: 'La Colombe Coffee',
+                description: 'Innovative coffee company famous for their draft latte and beautiful café spaces.',
+                address: '270 Lafayette St, New York, NY 10012',
+                lat: 40.7242,
+                lng: -73.9960,
+                rating: 4.6,
+                reviews: 198,
+                priceRange: '$$',
+                image: 'https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800',
+                tags: ['Draft Latte', 'Brunch', 'Instagram-worthy', 'Pastries'],
+                hours: {
+                    monday: '7:00 AM - 7:00 PM',
+                    tuesday: '7:00 AM - 7:00 PM',
+                    wednesday: '7:00 AM - 7:00 PM',
+                    thursday: '7:00 AM - 7:00 PM',
+                    friday: '7:00 AM - 8:00 PM',
+                    saturday: '8:00 AM - 8:00 PM',
+                    sunday: '8:00 AM - 7:00 PM'
+                },
+                amenities: ['WiFi', 'Brunch Menu', 'Draft Latte', 'Outdoor Seating'],
+                featured: false,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-005',
+                name: 'Birch Coffee',
+                description: 'Neighborhood coffee shop with a warm atmosphere and commitment to sustainability.',
+                address: '134 1/2 W 17th St, New York, NY 10011',
+                lat: 40.7403,
+                lng: -73.9971,
+                rating: 4.5,
+                reviews: 167,
+                priceRange: '$$',
+                image: 'https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800',
+                tags: ['WiFi', 'Cozy', 'Sustainable', 'Local'],
+                hours: {
+                    monday: '7:00 AM - 6:00 PM',
+                    tuesday: '7:00 AM - 6:00 PM',
+                    wednesday: '7:00 AM - 6:00 PM',
+                    thursday: '7:00 AM - 6:00 PM',
+                    friday: '7:00 AM - 7:00 PM',
+                    saturday: '8:00 AM - 7:00 PM',
+                    sunday: '8:00 AM - 6:00 PM'
+                },
+                amenities: ['WiFi', 'Power Outlets', 'Sustainable', 'Cozy Seating'],
+                featured: false,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-006',
+                name: 'Devoción',
+                description: 'Colombian coffee roastery with a stunning indoor garden and farm-to-cup philosophy.',
+                address: '69 Grand St, Brooklyn, NY 11249',
+                lat: 40.7133,
+                lng: -73.9573,
+                rating: 4.8,
+                reviews: 523,
+                priceRange: '$$$',
+                image: 'https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800',
+                tags: ['Roastery', 'Indoor Garden', 'Colombian Coffee', 'Instagram-worthy'],
+                hours: {
+                    monday: '7:00 AM - 7:00 PM',
+                    tuesday: '7:00 AM - 7:00 PM',
+                    wednesday: '7:00 AM - 7:00 PM',
+                    thursday: '7:00 AM - 7:00 PM',
+                    friday: '7:00 AM - 8:00 PM',
+                    saturday: '8:00 AM - 8:00 PM',
+                    sunday: '8:00 AM - 7:00 PM'
+                },
+                amenities: ['WiFi', 'Indoor Garden', 'Roastery Tours', 'Specialty Drinks'],
+                featured: true,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-007',
+                name: 'Café Grumpy',
+                description: 'Brooklyn-born coffee shop known for quality espresso and friendly neighborhood vibe.',
+                address: '224 W 20th St, New York, NY 10011',
+                lat: 40.7436,
+                lng: -73.9989,
+                rating: 4.4,
+                reviews: 234,
+                priceRange: '$$',
+                image: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800',
+                tags: ['Espresso', 'Local Favorite', 'WiFi', 'Pastries'],
+                hours: {
+                    monday: '7:00 AM - 7:00 PM',
+                    tuesday: '7:00 AM - 7:00 PM',
+                    wednesday: '7:00 AM - 7:00 PM',
+                    thursday: '7:00 AM - 7:00 PM',
+                    friday: '7:00 AM - 8:00 PM',
+                    saturday: '8:00 AM - 8:00 PM',
+                    sunday: '8:00 AM - 7:00 PM'
+                },
+                amenities: ['WiFi', 'Power Outlets', 'Espresso Bar', 'Pastries'],
+                featured: false,
+                createdAt: new Date().toISOString()
+            },
+            {
+                id: 'cafe-008',
+                name: 'Think Coffee',
+                description: 'Fair trade coffee shop with a mission-driven approach and multiple NYC locations.',
+                address: '248 Mercer St, New York, NY 10012',
+                lat: 40.7282,
+                lng: -73.9956,
+                rating: 4.3,
+                reviews: 189,
+                priceRange: '$',
+                image: 'https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800',
+                tags: ['Fair Trade', 'Student Friendly', 'WiFi', 'Affordable'],
+                hours: {
+                    monday: '6:30 AM - 9:00 PM',
+                    tuesday: '6:30 AM - 9:00 PM',
+                    wednesday: '6:30 AM - 9:00 PM',
+                    thursday: '6:30 AM - 9:00 PM',
+                    friday: '6:30 AM - 10:00 PM',
+                    saturday: '7:00 AM - 10:00 PM',
+                    sunday: '7:00 AM - 9:00 PM'
+                },
+                amenities: ['WiFi', 'Power Outlets', 'Study Space', 'Fair Trade'],
+                featured: false,
+                createdAt: new Date().toISOString()
+            }
+        ];
+
+        async function clearAllCafes() {
+            addLog('🗑️ Clearing all existing cafés...', 'info');
+            
+            try {
+                const cafesSnapshot = await getDocs(collection(db, 'cafes'));
+                const deletePromises = [];
+                
+                cafesSnapshot.forEach((doc) => {
+                    deletePromises.push(deleteDoc(doc.ref));
+                });
+                
+                await Promise.all(deletePromises);
+                addLog(`✅ Deleted ${deletePromises.length} cafés`, 'success');
+            } catch (error) {
+                addLog(`❌ Error clearing cafés: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+
+        async function addExampleCafes() {
+            addLog('📝 Adding example cafés...', 'info');
+            
+            try {
+                for (const cafe of exampleCafes) {
+                    await setDoc(doc(db, 'cafes', cafe.id), cafe);
+                    addLog(`  ✓ Added: ${cafe.name}`, 'success');
+                }
+                
+                addLog(`✅ Added ${exampleCafes.length} example cafés`, 'success');
+            } catch (error) {
+                addLog(`❌ Error adding cafés: ${error.message}`, 'error');
+                throw error;
+            }
+        }
+
+        window.performReset = async function() {
+            if (!confirm('Are you sure you want to reset the database? This will delete all existing cafés!')) {
+                return;
+            }
+
+            resetBtn.disabled = true;
+            resetBtn.innerHTML = '<span class="spinner"></span> <span>Resetting...</span>';
+            statusBox.innerHTML = '';
+            
+            try {
+                addLog('🔄 Starting database reset...', 'info');
+                addLog('', 'info');
+                
+                await clearAllCafes();
+                addLog('', 'info');
+                
+                await addExampleCafes();
+                addLog('', 'info');
+                
+                addLog('✅ Database reset complete!', 'success');
+                addLog(`📊 Total cafés in database: ${exampleCafes.length}`, 'success');
+                addLog('', 'info');
+                addLog('🎉 You can now view the cafés on the home page and map!', 'success');
+                
+                resetBtn.innerHTML = '<i class="fas fa-check"></i> <span>Reset Complete!</span>';
+                
+                setTimeout(() => {
+                    if (confirm('Database reset successful! Would you like to go to the home page?')) {
+                        window.location.href = 'index.html';
+                    } else {
+                        resetBtn.disabled = false;
+                        resetBtn.innerHTML = '<i class="fas fa-sync-alt"></i> <span>Reset Database</span>';
+                    }
+                }, 2000);
+                
+            } catch (error) {
+                addLog(`❌ Database reset failed: ${error.message}`, 'error');
+                resetBtn.disabled = false;
+                resetBtn.innerHTML = '<i class="fas fa-sync-alt"></i> <span>Reset Database</span>';
+            }
+        };
+
+        addLog('✓ Database reset tool ready', 'success');
+        addLog('Click "Reset Database" to begin', 'info');
+    </script>
+</body>
+</html>

@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loading... - HANGO</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/cafe-details-blue.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Loading overlay */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3e50 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        
+        .page-loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+        
+        .loader-content {
+            text-align: center;
+        }
+        
+        .coffee-loader {
+            font-size: 4rem;
+            animation: bounce 1s ease-in-out infinite;
+        }
+        
+        .loader-text {
+            color: #00d4ff;
+            font-size: 1.2rem;
+            margin-top: 1rem;
+            font-weight: 500;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* Hide content until loaded */
+        .cafe-details-page {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .cafe-details-page.loaded {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Overlay -->
+    <div class="page-loader" id="pageLoader">
+        <div class="loader-content">
+            <div class="coffee-loader">☕</div>
+            <p class="loader-text">Loading café details...</p>
+        </div>
+    </div>
+    <!-- Main Content (hidden until loaded) -->
+    <div class="cafe-details-page" id="cafeDetailsPage">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <span class="logo-icon">☕</span>
+                    <span class="logo-text">HANGO</span>
+                </a>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="map.html">Explore</a></li>
+                    <li><a href="user-recommendations.html">Match</a></li>
+                    <li><a href="social-tables.html">Social</a></li>
+                    <li><a href="user-profile.html">Profile</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- Back Button -->
+        <button class="back-btn" onclick="window.history.back()">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back</span>
+        </button>
+
+        <!-- 3D Header with Parallax -->
+    <div class="cafe-header parallax-header">
+        <div class="header-image-container">
+            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1200" alt="Café" class="header-image">
+            <div class="header-overlay"></div>
+        </div>
+        <div class="header-content">
+            <h1 class="cafe-name">Artisan Brew House</h1>
+            <div class="cafe-quick-info">
+                <span class="quick-rating">⭐ 4.8</span>
+                <span class="quick-separator">•</span>
+                <span class="quick-price">$$</span>
+                <span class="quick-separator">•</span>
+                <span class="quick-status open">Open Now</span>
+            </div>
+        </div>
+        <button class="save-btn">
+            <span class="heart-icon">♡</span>
+        </button>
+    </div>
+
+    <!-- Tabs Navigation -->
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="overview">Overview</button>
+            <button class="tab-btn" data-tab="menu">Menu</button>
+            <button class="tab-btn" data-tab="reviews">Reviews</button>
+        </div>
+    </div>
+
+    <!-- Tab Content -->
+    <div class="tab-content-container">
+        <!-- Overview Tab -->
+        <div class="tab-content active" id="overview">
+            <div class="container">
+                <div class="overview-grid">
+                    <div class="overview-main">
+                        <section class="info-section">
+                            <h2>About</h2>
+                            <p>Experience the art of coffee at Artisan Brew House. We source the finest beans from around the world and craft each cup with precision and passion. Our cozy atmosphere makes it the perfect spot for work, meetings, or simply enjoying a moment of tranquility.</p>
+                        </section>
+
+                        <section class="info-section">
+                            <h2>Amenities</h2>
+                            <div class="amenities-grid">
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">📶</span>
+                                    <span>Free WiFi</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🔌</span>
+                                    <span>Power Outlets</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🌿</span>
+                                    <span>Outdoor Seating</span>
+                                </div>
+                                <div class="amenity-item">
+                                    <span class="amenity-icon">🐕</span>
+                                    <span>Pet Friendly</span>
+                                </div>
+                            </div>
+                        </section>
+
+                        <section class="info-section">
+                            <h2>Hours</h2>
+                            <div class="hours-list">
+                                <div class="hour-item"><span>Monday</span><span>7:00 AM - 8:00 PM</span></div>
+                                <div class="hour-item"><span>Tuesday</span><span>7:00 AM - 8:00 PM</span></div>
+                                <div class="hour-item"><span>Wednesday</span><span>7:00 AM - 8:00 PM</span></div>
+                                <div class="hour-item"><span>Thursday</span><span>7:00 AM - 9:00 PM</span></div>
+                                <div class="hour-item"><span>Friday</span><span>7:00 AM - 10:00 PM</span></div>
+                                <div class="hour-item"><span>Saturday</span><span>8:00 AM - 10:00 PM</span></div>
+                                <div class="hour-item"><span>Sunday</span><span>8:00 AM - 7:00 PM</span></div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <div class="overview-sidebar">
+                        <div class="sidebar-card">
+                            <h3>Location</h3>
+                            <p class="location-address">123 Coffee Street, Downtown</p>
+                            <button class="btn-primary full-width">Get Directions</button>
+                        </div>
+
+                        <div class="sidebar-card">
+                            <h3>Contact</h3>
+                            <p>📞 (555) 123-4567</p>
+                            <p>📧 hello@artisanbrew.com</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menu Tab -->
+        <div class="tab-content" id="menu">
+            <div class="container">
+                <div class="menu-grid">
+                    <div class="menu-card-3d">
+                        <div class="menu-card-image">
+                            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400" alt="Coffee">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3>Espresso</h3>
+                            <p>Rich, bold shot of pure coffee</p>
+                            <span class="menu-price">$3.50</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card-3d">
+                        <div class="menu-card-image">
+                            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400" alt="Latte">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3>Caramel Latte</h3>
+                            <p>Smooth espresso with steamed milk</p>
+                            <span class="menu-price">$5.50</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card-3d">
+                        <div class="menu-card-image">
+                            <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400" alt="Cappuccino">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3>Cappuccino</h3>
+                            <p>Perfect balance of espresso and foam</p>
+                            <span class="menu-price">$4.50</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card-3d">
+                        <div class="menu-card-image">
+                            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400" alt="Croissant">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3>Butter Croissant</h3>
+                            <p>Flaky, buttery perfection</p>
+                            <span class="menu-price">$4.00</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card-3d">
+                        <div class="menu-card-image">
+                            <img src="https://images.unsplash.com/photo-1587080266227-677cc2a4e76e?w=400" alt="Cake">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3>Chocolate Cake</h3>
+                            <p>Decadent layered chocolate</p>
+                            <span class="menu-price">$6.50</span>
+                        </div>
+                    </div>
+
+                    <div class="menu-card-3d">
+                        <div class="menu-card-image">
+                            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400" alt="Cold Brew">
+                        </div>
+                        <div class="menu-card-content">
+                            <h3>Cold Brew</h3>
+                            <p>Smooth, refreshing cold coffee</p>
+                            <span class="menu-price">$5.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Reviews Tab -->
+        <div class="tab-content" id="reviews">
+            <div class="container">
+                <div class="reviews-section">
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">JD</div>
+                                <div>
+                                    <h4>John Doe</h4>
+                                    <span class="review-date">2 days ago</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Amazing coffee and atmosphere! The baristas really know their craft. Perfect spot for remote work.</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">SM</div>
+                                <div>
+                                    <h4>Sarah Miller</h4>
+                                    <span class="review-date">1 week ago</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Best latte in town! Love the cozy interior and friendly staff. Highly recommend the caramel latte.</p>
+                    </div>
+
+                    <div class="review-card">
+                        <div class="review-header">
+                            <div class="reviewer-info">
+                                <div class="reviewer-avatar">MJ</div>
+                                <div>
+                                    <h4>Mike Johnson</h4>
+                                    <span class="review-date">2 weeks ago</span>
+                                </div>
+                            </div>
+                            <div class="review-rating">⭐⭐⭐⭐</div>
+                        </div>
+                        <p class="review-text">Great coffee and pastries. Can get a bit crowded during peak hours, but worth the wait!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- End Main Content -->
+
+    <script type="module" src="scripts/cafe-details-enhanced.js"></script>
+</body>
+</html>

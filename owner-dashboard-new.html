@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner Dashboard - HANGO</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/owner-portal-blue.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="owner-portal">
+    <!-- Coffee Grain Background -->
+    <div class="coffee-grain-bg"></div>
+
+    <!-- Sidebar Navigation -->
+    <aside class="owner-sidebar-new">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <span class="owner-badge">Owner Portal</span>
+        </div>
+        
+        <nav class="sidebar-nav-new">
+            <a href="owner-dashboard-new.html" class="nav-item active">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="owner-cafes.html" class="nav-item">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">My Cafés</span>
+            </a>
+            <a href="owner-add-cafe-new.html" class="nav-item">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Add Café</span>
+            </a>
+            <a href="owner-analytics-new.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Analytics</span>
+            </a>
+            <a href="owner-gallery-new.html" class="nav-item">
+                <span class="nav-icon">🖼️</span>
+                <span class="nav-text">Gallery</span>
+            </a>
+            <a href="owner-settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="owner-profile-mini">
+                <div class="profile-avatar-mini">JD</div>
+                <div class="profile-info-mini">
+                    <span class="profile-name-mini" id="owner-name">John's Café</span>
+                    <span class="profile-status">Verified</span>
+                </div>
+            </div>
+            <button class="logout-btn-mini" id="logout-btn">
+                <span>🚪</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="owner-main-new">
+        <!-- Header -->
+        <header class="dashboard-header-new">
+            <div class="header-left">
+                <h1 class="page-title">Manage Your Café</h1>
+                <p class="page-subtitle">Welcome back! Here's what's happening today.</p>
+            </div>
+            <div class="header-right">
+                <!-- Live Sync Indicator -->
+                <div class="sync-indicator">
+                    <div class="sync-pulse"></div>
+                    <span class="sync-text">Live</span>
+                    <span class="sync-time">Updated 2m ago</span>
+                </div>
+                <button class="notification-btn">
+                    <span class="notif-icon">🔔</span>
+                    <span class="notif-badge">3</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <button class="add-cafe-cta" onclick="window.location.href='owner-add-cafe-new.html'">
+                <div class="cta-glow"></div>
+                <span class="cta-icon">➕</span>
+                <span class="cta-text">Add New Café</span>
+                <span class="cta-arrow">→</span>
+            </button>
+        </section>
+
+        <!-- Analytics Cards -->
+        <section class="analytics-cards-grid">
+            <div class="stat-card-3d-new">
+                <div class="stat-card-header">
+                    <span class="stat-icon">👁️</span>
+                    <span class="stat-badge live">Live</span>
+                </div>
+                <div class="stat-card-body">
+                    <h3 class="stat-number">2,847</h3>
+                    <p class="stat-label">Total Views</p>
+                    <div class="stat-trend up">
+                        <span class="trend-icon">↑</span>
+                        <span class="trend-value">12%</span>
+                        <span class="trend-text">vs last week</span>
+                    </div>
+                </div>
+                <div class="stat-card-footer">
+                    <span class="sync-badge">Synced to user portal</span>
+                </div>
+            </div>
+
+            <div class="stat-card-3d-new">
+                <div class="stat-card-header">
+                    <span class="stat-icon">❤️</span>
+                    <span class="stat-badge live">Live</span>
+                </div>
+                <div class="stat-card-body">
+                    <h3 class="stat-number">1,234</h3>
+                    <p class="stat-label">User Saves</p>
+                    <div class="stat-trend up">
+                        <span class="trend-icon">↑</span>
+                        <span class="trend-value">8%</span>
+                        <span class="trend-text">vs last week</span>
+                    </div>
+                </div>
+                <div class="stat-card-footer">
+                    <span class="sync-badge">Synced to user portal</span>
+                </div>
+            </div>
+
+            <div class="stat-card-3d-new">
+                <div class="stat-card-header">
+                    <span class="stat-icon">⭐</span>
+                    <span class="stat-badge live">Live</span>
+                </div>
+                <div class="stat-card-body">
+                    <h3 class="stat-number">4.8</h3>
+                    <p class="stat-label">Average Rating</p>
+                    <div class="stat-trend">
+                        <span class="trend-text">234 reviews</span>
+                    </div>
+                </div>
+                <div class="stat-card-footer">
+                    <span class="sync-badge">Synced to user portal</span>
+                </div>
+            </div>
+
+            <div class="stat-card-3d-new">
+                <div class="stat-card-header">
+                    <span class="stat-icon">📋</span>
+                    <span class="stat-badge updated">Updated</span>
+                </div>
+                <div class="stat-card-body">
+                    <h3 class="stat-number">12</h3>
+                    <p class="stat-label">Menu Updates</p>
+                    <div class="stat-trend">
+                        <span class="trend-text">This month</span>
+                    </div>
+                </div>
+                <div class="stat-card-footer">
+                    <span class="sync-badge">Synced to user portal</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recent Updates Feed -->
+        <section class="recent-updates-section">
+            <div class="section-header">
+                <h2 class="section-title">Recent Updates</h2>
+                <p class="section-subtitle">What users see now</p>
+            </div>
+
+            <div class="updates-feed">
+                <div class="update-item">
+                    <div class="update-icon success">✓</div>
+                    <div class="update-content">
+                        <h4 class="update-title">Menu Updated</h4>
+                        <p class="update-description">New items are now visible to users</p>
+                        <span class="update-time">2 minutes ago</span>
+                    </div>
+                    <span class="update-badge live">Live on User Portal</span>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-icon success">✓</div>
+                    <div class="update-content">
+                        <h4 class="update-title">Gallery Images Added</h4>
+                        <p class="update-description">5 new photos published</p>
+                        <span class="update-time">1 hour ago</span>
+                    </div>
+                    <span class="update-badge live">Live on User Portal</span>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-icon success">✓</div>
+                    <div class="update-content">
+                        <h4 class="update-title">Hours Updated</h4>
+                        <p class="update-description">New opening hours synced</p>
+                        <span class="update-time">3 hours ago</span>
+                    </div>
+                    <span class="update-badge live">Live on User Portal</span>
+                </div>
+
+                <div class="update-item">
+                    <div class="update-icon info">ℹ</div>
+                    <div class="update-content">
+                        <h4 class="update-title">New Review Received</h4>
+                        <p class="update-description">Sarah M. left a 5-star review</p>
+                        <span class="update-time">5 hours ago</span>
+                    </div>
+                    <span class="update-badge">User Activity</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quick Actions -->
+        <section class="quick-actions-section">
+            <h2 class="section-title">Quick Actions</h2>
+            <div class="quick-actions-grid">
+                <button class="quick-action-card" onclick="window.location.href='owner-add-cafe-new.html'">
+                    <span class="qa-icon">➕</span>
+                    <span class="qa-text">Add Café</span>
+                </button>
+                <button class="quick-action-card" onclick="window.location.href='owner-gallery-new.html'">
+                    <span class="qa-icon">📸</span>
+                    <span class="qa-text">Upload Photos</span>
+                </button>
+                <button class="quick-action-card" onclick="window.location.href='owner-cafes.html'">
+                    <span class="qa-icon">✏️</span>
+                    <span class="qa-text">Edit Menu</span>
+                </button>
+                <button class="quick-action-card" onclick="window.location.href='owner-analytics-new.html'">
+                    <span class="qa-icon">📊</span>
+                    <span class="qa-text">View Analytics</span>
+                </button>
+            </div>
+        </section>
+    </main>
+
+    <!-- Success Toast -->
+    <div class="toast-notification" id="toast">
+        <div class="toast-icon">✓</div>
+        <div class="toast-content">
+            <h4 class="toast-title">Success!</h4>
+            <p class="toast-message">Changes synced to user portal</p>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/owner-dashboard-new.js"></script>
+</body>
+</html>

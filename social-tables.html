@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Tables - HANGO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/social-tables.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon"><i class="fas fa-mug-hot"></i></span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Explore</a></li>
+                <li><a href="user-recommendations.html">Match</a></li>
+                <li><a href="social-tables.html" class="active">Social</a></li>
+                <li><a href="user-profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="social-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Connect Over Coffee</h1>
+                <p class="hero-subtitle">Join themed tables, meet like-minded people, and share amazing café experiences</p>
+                <div class="hero-actions">
+                    <button class="btn-primary" onclick="showHostModal()">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Host a Table</span>
+                    </button>
+                    <button class="btn-secondary" onclick="scrollToTables()">
+                        <i class="fas fa-search"></i>
+                        <span>Browse Tables</span>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-value" id="totalParticipants">0</div>
+                    <div class="stat-label">Active Participants</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-table"></i></div>
+                    <div class="stat-value" id="activeTables">0</div>
+                    <div class="stat-label">Live Tables</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-value" id="confirmedTables">0</div>
+                    <div class="stat-label">Confirmed Today</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Filter Section -->
+        <section class="filter-section">
+            <div class="filter-container">
+                <div class="filter-group">
+                    <label>Filter by Status:</label>
+                    <div class="filter-chips">
+                        <button class="filter-chip active" data-filter="all">All Tables</button>
+                        <button class="filter-chip" data-filter="filling">Filling Up</button>
+                        <button class="filter-chip" data-filter="confirmed">Confirmed</button>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label>Sort by:</label>
+                    <select id="sortSelect" class="sort-select">
+                        <option value="newest">Newest First</option>
+                        <option value="filling">Almost Full</option>
+                        <option value="popular">Most Popular</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tables Grid -->
+        <section class="tables-section" id="tablesSection">
+            <div class="tables-container">
+                <h2 class="section-title">Available Tables</h2>
+                <div class="tables-grid" id="tablesGrid">
+                    <!-- Loading state -->
+                    <div class="loading-state" id="loadingState">
+                        <div class="loader-spinner"></div>
+                        <p>Loading social tables...</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- My Tables Section -->
+        <section class="my-tables-section">
+            <div class="my-tables-container">
+                <h2 class="section-title">My Tables</h2>
+                <div class="my-tables-grid" id="myTablesGrid">
+                    <div class="empty-state">
+                        <i class="fas fa-table"></i>
+                        <p>You haven't joined or hosted any tables yet</p>
+                        <button class="btn-primary" onclick="showHostModal()">Host Your First Table</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Host Table Modal -->
+    <div class="modal" id="hostModal">
+        <div class="modal-overlay" onclick="closeHostModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeHostModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2 class="modal-title">Host a Social Table</h2>
+            <p class="modal-subtitle">Create a themed gathering and connect with others</p>
+
+            <form id="hostTableForm" class="host-form">
+                <!-- Niche/Theme -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-hashtag"></i>
+                        <span>Table Theme / Niche</span>
+                    </label>
+                    <input type="text" id="tableNiche" placeholder="e.g., Anime Fans, Tech Enthusiasts, Book Club..." required>
+                    <div class="quick-themes">
+                        <button type="button" class="theme-btn" onclick="setTheme('Anime Fans')">🎌 Anime</button>
+                        <button type="button" class="theme-btn" onclick="setTheme('Tech Talk')">💻 Tech</button>
+                        <button type="button" class="theme-btn" onclick="setTheme('Book Club')">📚 Books</button>
+                        <button type="button" class="theme-btn" onclick="setTheme('Startup Founders')">🚀 Startups</button>
+                    </div>
+                </div>
+
+                <!-- Café Selection -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-store"></i>
+                        <span>Select Café</span>
+                    </label>
+                    <select id="cafeSelect" required>
+                        <option value="">Choose a café...</option>
+                    </select>
+                </div>
+
+                <!-- Max Seats -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-chair"></i>
+                        <span>Maximum Seats</span>
+                    </label>
+                    <div class="seats-selector">
+                        <button type="button" class="seat-btn" onclick="adjustSeats(-1)">
+                            <i class="fas fa-minus"></i>
+                        </button>
+                        <div class="seats-display">
+                            <input type="number" id="maxSeats" value="6" min="2" max="20" readonly>
+                            <span class="seats-label">seats</span>
+                        </div>
+                        <button type="button" class="seat-btn" onclick="adjustSeats(1)">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+                    <div class="seats-visual" id="seatsVisual"></div>
+                </div>
+
+                <!-- Date & Time -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Date & Time</span>
+                    </label>
+                    <div class="datetime-inputs">
+                        <input type="date" id="tableDate" required>
+                        <input type="time" id="tableTime" required>
+                    </div>
+                </div>
+
+                <!-- Entry Rules -->
+                <div class="form-group">
+                    <label class="form-label">
+                        <i class="fas fa-list-check"></i>
+                        <span>Entry Rules (Optional)</span>
+                    </label>
+                    <textarea id="entryRules" placeholder="Any specific requirements or expectations..." rows="3"></textarea>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit" class="submit-btn">
+                    <span class="btn-text">Create Table</span>
+                    <span class="btn-icon"><i class="fas fa-rocket"></i></span>
+                    <div class="btn-glow"></div>
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Join Table Modal -->
+    <div class="modal" id="joinModal">
+        <div class="modal-overlay" onclick="closeJoinModal()"></div>
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeJoinModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <div id="joinModalContent"></div>
+        </div>
+    </div>
+
+    <!-- Success Toast -->
+    <div class="toast" id="toast">
+        <div class="toast-icon"><i class="fas fa-check-circle"></i></div>
+        <div class="toast-content">
+            <h4 class="toast-title">Success!</h4>
+            <p class="toast-message" id="toastMessage"></p>
+        </div>
+    </div>
+
+    <script type="module" src="scripts/social-tables-complete.js"></script>
+</body>
+</html>

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Bhopal Cafés</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        .container {
+            background: white;
+            border-radius: 20px;
+            padding: 3rem;
+            max-width: 800px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        h1 {
+            color: #667eea;
+            margin-bottom: 1rem;
+        }
+        .status {
+            background: #f0f0f0;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin: 1.5rem 0;
+            max-height: 400px;
+            overflow-y: auto;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+        .status div {
+            margin: 0.5rem 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+        }
+        .success { background: #d4edda; color: #155724; }
+        .error { background: #f8d7da; color: #721c24; }
+        .info { background: #d1ecf1; color: #0c5460; }
+        .warning { background: #fff3cd; color: #856404; }
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            width: 100%;
+            font-weight: bold;
+            transition: transform 0.2s;
+        }
+        button:hover {
+            transform: translateY(-2px);
+        }
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+        .stat-card {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 10px;
+            text-align: center;
+        }
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🏪 Import Bhopal Cafés</h1>
+        <p>This will add 24 cafés from Bhopal to your Firebase database with complete details including menus, timings, and locations.</p>
+        
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="totalCafes">24</div>
+                <div class="stat-label">Total Cafés</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="imported">0</div>
+                <div class="stat-label">Imported</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="failed">0</div>
+                <div class="stat-label">Failed</div>
+            </div>
+        </div>
+
+        <button id="importBtn" onclick="importCafes()">Start Import</button>
+        
+        <div class="status" id="status">
+            <div class="info">Click "Start Import" to begin adding cafés to Firebase...</div>
+        </div>
+    </div>
+
+    <script type="module">
+        import { db } from './scripts/firebase-config.js';
+        import { collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        // Bhopal Cafés Data
+        const bhopalCafes = [
+            {
+                category: "Ambience & Nature",
+                name: "Green House Bistro",
+                location: "Jehan Numa Retreat Prempura",
+                cost: "1200-1500",
+                timings: "11:00 AM - 11:00 PM",
+                highlights: "Greenhouse setting, Farm-to-table salads, Pizza"
+            },
+            {
+                category: "Ambience & Nature",
+                name: "Under The Jamun Tree",
+                location: "Jehan Numa Retreat Prempura",
+                cost: "2000+",
+                timings: "7:00 PM - 11:00 PM",
+                highlights: "Luxury outdoor dining, Charcoal grilled kebabs, Mughlai"
+            },
+            {
+                category: "Ambience & Nature",
+                name: "The Roof Tree",
+                location: "MP Nagar Zone 1",
+                cost: "600-800",
+                timings: "11:00 AM - 11:30 PM",
+                highlights: "Rooftop city view, Pasta Alfredo, Mocktails"
+            },
+            {
+                category: "Ambience & Nature",
+                name: "Atmosphere",
+                location: "MP Nagar Zone 1",
+                cost: "900-1000",
+                timings: "11:00 AM - 11:00 PM",
+                highlights: "High-rise view, North Indian platters, Sizzlers"
+            },
+            {
+                category: "Ambience & Nature",
+                name: "Wind & Waves",
+                location: "Shyamla Hills",
+                cost: "600-800",
+                timings: "1:00 PM - 11:00 PM",
+                highlights: "Lake view, Pakoras, Coffee"
+            },
+            {
+                category: "Coffee & Work",
+                name: "Cafe Amado",
+                location: "Arera Colony E-7",
+                cost: "600-800",
+                timings: "11:00 AM - 10:00 PM",
+                highlights: "Aesthetic minimalist, Pour-over coffee, Avocado Toast"
+            },
+            {
+                category: "Coffee & Work",
+                name: "Handcrafted Cafe",
+                location: "Arera Colony E-4",
+                cost: "500-700",
+                timings: "11:00 AM - 10:00 PM",
+                highlights: "Quiet rustic vibe, Cappuccino, Bagels"
+            },
+            {
+                category: "Coffee & Work",
+                name: "Nothing Before Coffee (NBC)",
+                location: "Gulmohar Colony & MP Nagar",
+                cost: "300-500",
+                timings: "9:00 AM - 11:00 PM",
+                highlights: "Grab-and-go, Frappe, Thick Cold Coffee"
+            },
+            {
+                category: "Coffee & Work",
+                name: "Blue Tokai Coffee",
+                location: "Arera Colony",
+                cost: "500-700",
+                timings: "8:00 AM - 10:00 PM",
+                highlights: "Professional workspace, Roasted coffee blends, Sourdough"
+            },
+            {
+                category: "Coffee & Work",
+                name: "Indian Coffee House (ICH)",
+                location: "New Market / MP Nagar",
+                cost: "300",
+                timings: "8:00 AM - 10:30 PM",
+                highlights: "Old-school nostalgia, Filter Coffee, Dosa"
+            },
+            {
+                category: "Bakery & Desserts",
+                name: "Bhopal Bakehouse & Cafe",
+                location: "Arera Colony E-4",
+                cost: "800-1000",
+                timings: "10:00 AM - 11:00 PM",
+                highlights: "Chic interiors, Cheesecakes, Macarons, Sourdough Pizza"
+            },
+            {
+                category: "Bakery & Desserts",
+                name: "Bake N Shake",
+                location: "Multiple Locations",
+                cost: "400-600",
+                timings: "10:00 AM - 11:00 PM",
+                highlights: "Bustling classic, Spicy Corn Sandwich, Blueberry Cheese Cupcake"
+            },
+            {
+                category: "Bakery & Desserts",
+                name: "Amer Bakery Hut",
+                location: "Arera Colony",
+                cost: "300-500",
+                timings: "10:00 AM - 10:30 PM",
+                highlights: "Small bakery outlet, Chicken Burger, Pastries"
+            },
+            {
+                category: "Bakery & Desserts",
+                name: "Lamington Cafe",
+                location: "Arera Colony",
+                cost: "600-800",
+                timings: "11:00 AM - 10:00 PM",
+                highlights: "Boutique patisserie, Lamingtons, Fresh breads"
+            },
+            {
+                category: "Budget & Student",
+                name: "Caffeine Mug Cafe",
+                location: "Mansarovar Complex",
+                cost: "200-300",
+                timings: "12:00 PM - 9:00 PM",
+                highlights: "Affordable, Fries, Shakes"
+            },
+            {
+                category: "Budget & Student",
+                name: "Chai 34",
+                location: "Shivaji Nagar",
+                cost: "100-200",
+                timings: "Open Late",
+                highlights: "Late night spot, Masala Chai"
+            },
+            {
+                category: "Budget & Student",
+                name: "Sagar Gaire",
+                location: "10 No. Market (Multiple)",
+                cost: "300",
+                timings: "11:00 AM - 11:00 PM",
+                highlights: "Fast food legend, Paneer Kulcha, Cold Coffee"
+            },
+            {
+                category: "Budget & Student",
+                name: "Harry's Cafe",
+                location: "10 Number Market",
+                cost: "300-400",
+                timings: "11:00 AM - 10:00 PM",
+                highlights: "Student favorite, Burgers, Shakes"
+            },
+            {
+                category: "Hidden Gems",
+                name: "Pin & Pan",
+                location: "Gulmohar Colony",
+                cost: "Varied",
+                timings: "Varied",
+                highlights: "Asian fusion, Distinctive aesthetic"
+            },
+            {
+                category: "Hidden Gems",
+                name: "Cafechino",
+                location: "Jehan Numa Palace",
+                cost: "Premium",
+                timings: "11:00 AM - 11:00 PM",
+                highlights: "Heritage hotel cafe, Premium ambience"
+            },
+            {
+                category: "Hidden Gems",
+                name: "Oliver Bistro",
+                location: "Arera Colony",
+                cost: "Varied",
+                timings: "Varied",
+                highlights: "European aesthetic, Cozy outdoor seating"
+            },
+            {
+                category: "Hidden Gems",
+                name: "Happy Heart Cafe",
+                location: "Bawadiya Kalan",
+                cost: "Varied",
+                timings: "Varied",
+                highlights: "Pet-friendly, Homely vibe"
+            }
+        ];
+
+        // Convert cost to price range
+        function getPriceRange(cost) {
+            const avgCost = parseInt(cost.replace(/[^0-9]/g, '')) || 500;
+            if (avgCost < 400) return '₹';
+            if (avgCost < 800) return '₹₹';
+            return '₹₹₹';
+        }
+
+        // Generate menu based on highlights and cost (realistic Indian prices)
+        function generateMenu(highlights, cost) {
+            const items = highlights.split(',').map(h => h.trim());
+            const avgCost = parseInt(cost.replace(/[^0-9]/g, '')) || 500;
+            // Cost is for 2 people, so divide by 2 first, then use reasonable multiplier
+            const perPersonCost = avgCost / 2;
+            // Base price should be much lower - a single item, not full meal
+            const basePrice = Math.round(perPersonCost / 5); // Much more realistic
+
+            const menu = [];
+            items.forEach((item, index) => {
+                if (item && item.length > 3) {
+                    menu.push({
+                        name: item,
+                        description: `Specialty ${item.toLowerCase()}`,
+                        price: Math.max(30, basePrice + (index * 20)), // Min ₹30, increment ₹20
+                        category: 'Specialty'
+                    });
+                }
+            });
+
+            // Add standard items with realistic Indian café prices
+            menu.push(
+                { name: 'Filter Coffee', description: 'Traditional filter coffee', price: Math.max(40, Math.round(basePrice * 0.8)), category: 'Beverages' },
+                { name: 'Masala Chai', description: 'Spiced Indian tea', price: Math.max(30, Math.round(basePrice * 0.6)), category: 'Beverages' },
+                { name: 'Cappuccino', description: 'Coffee with foam', price: Math.max(80, Math.round(basePrice * 1.2)), category: 'Beverages' },
+                { name: 'Cold Coffee', description: 'Iced coffee', price: Math.max(100, Math.round(basePrice * 1.5)), category: 'Beverages' },
+                { name: 'Veg Sandwich', description: 'Fresh veg sandwich', price: Math.max(120, Math.round(basePrice * 1.8)), category: 'Food' },
+                { name: 'Samosa (2 pcs)', description: 'Crispy samosas', price: Math.max(40, Math.round(basePrice * 0.7)), category: 'Snacks' }
+            );
+
+            return menu;
+        }
+
+        // Get amenities based on category and highlights
+        function getAmenities(category, highlights) {
+            const amenities = ['WiFi'];
+            
+            if (category.includes('Work')) amenities.push('Power Outlets', 'Quiet Space');
+            if (category.includes('Nature')) amenities.push('Outdoor Seating', 'Garden View');
+            if (highlights.includes('Pet')) amenities.push('Pet Friendly');
+            if (highlights.includes('Parking')) amenities.push('Parking');
+            if (highlights.includes('Rooftop') || highlights.includes('view')) amenities.push('Rooftop');
+            if (category.includes('Budget')) amenities.push('Affordable');
+            
+            return amenities;
+        }
+
+        // Get tags
+        function getTags(category, highlights) {
+            const tags = [category.split('&')[0].trim()];
+            
+            if (highlights.includes('Coffee')) tags.push('Coffee');
+            if (highlights.includes('Pizza') || highlights.includes('Burger')) tags.push('Food');
+            if (highlights.includes('Dessert') || highlights.includes('Cake')) tags.push('Desserts');
+            if (highlights.includes('Cozy') || highlights.includes('Aesthetic')) tags.push('Cozy');
+            
+            return [...new Set(tags)];
+        }
+
+        // Random Bhopal coordinates
+        function getBhopalCoordinates() {
+            const baseLat = 23.2599;
+            const baseLng = 77.4126;
+            return {
+                lat: baseLat + (Math.random() - 0.5) * 0.1,
+                lng: baseLng + (Math.random() - 0.5) * 0.1
+            };
+        }
+
+        // Import function
+        window.importCafes = async function() {
+            const btn = document.getElementById('importBtn');
+            const status = document.getElementById('status');
+            const importedCount = document.getElementById('imported');
+            const failedCount = document.getElementById('failed');
+            
+            btn.disabled = true;
+            btn.textContent = 'Importing...';
+            status.innerHTML = '<div class="info">Starting import process...</div>';
+            
+            let imported = 0;
+            let failed = 0;
+
+            for (const cafe of bhopalCafes) {
+                try {
+                    const coords = getBhopalCoordinates();
+                    const cafeData = {
+                        name: cafe.name,
+                        description: `${cafe.highlights}. Located in ${cafe.location}, Bhopal. ${cafe.category} café with a unique atmosphere.`,
+                        location: {
+                            address: `${cafe.location}, Bhopal, Madhya Pradesh`,
+                            city: 'Bhopal',
+                            state: 'Madhya Pradesh',
+                            lat: coords.lat,
+                            lng: coords.lng
+                        },
+                        priceRange: getPriceRange(cafe.cost),
+                        rating: (4.0 + Math.random() * 1.0).toFixed(1),
+                        category: cafe.category,
+                        timings: cafe.timings,
+                        amenities: getAmenities(cafe.category, cafe.highlights),
+                        tags: getTags(cafe.category, cafe.highlights),
+                        menu: generateMenu(cafe.highlights, cafe.cost),
+                        images: [
+                            'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800',
+                            'https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800'
+                        ],
+                        contact: {
+                            phone: '+91 98765 43210',
+                            email: `contact@${cafe.name.toLowerCase().replace(/\s+/g, '')}.com`
+                        },
+                        hours: {
+                            default: cafe.timings
+                        },
+                        createdAt: serverTimestamp(),
+                        updatedAt: serverTimestamp(),
+                        status: 'active'
+                    };
+
+                    await addDoc(collection(db, 'cafes'), cafeData);
+                    imported++;
+                    importedCount.textContent = imported;
+                    
+                    status.innerHTML += `<div class="success">✅ Added: ${cafe.name}</div>`;
+                    status.scrollTop = status.scrollHeight;
+                    
+                } catch (error) {
+                    failed++;
+                    failedCount.textContent = failed;
+                    status.innerHTML += `<div class="error">❌ Failed: ${cafe.name} - ${error.message}</div>`;
+                    status.scrollTop = status.scrollHeight;
+                }
+            }
+
+            status.innerHTML += `<div class="info"><strong>Import Complete!</strong><br>✅ Successfully imported: ${imported}<br>❌ Failed: ${failed}</div>`;
+            btn.textContent = 'Import Complete!';
+            btn.style.background = '#28a745';
+        };
+    </script>
+</body>
+</html>

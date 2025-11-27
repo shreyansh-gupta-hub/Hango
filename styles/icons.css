@@ -1,0 +1,78 @@
+/* Icon Replacement System - Font Awesome Icons */
+
+/* Hide emoji text and show Font Awesome icons instead */
+.logo-icon, .nav-icon, .stat-icon, .upload-icon, .notif-icon,
+.cta-icon, .qa-icon, .sync-icon, .upload-icon-new, .map-icon,
+.analytics-icon, .sync-item-icon, .notice-icon, .action-btn span:first-child {
+    font-family: 'Font Awesome 6 Free', 'Font Awesome 6 Brands';
+    font-weight: 900;
+    font-style: normal;
+}
+
+/* Coffee Cup Icon */
+.logo-icon::before {
+    content: '\f7b6'; /* fa-mug-hot */
+}
+
+/* Navigation Icons */
+.nav-icon[data-icon="dashboard"]::before { content: '\f201'; /* fa-chart-line */ }
+.nav-icon[data-icon="cafes"]::before { content: '\f54e'; /* fa-store */ }
+.nav-icon[data-icon="add"]::before { content: '\f067'; /* fa-plus */ }
+.nav-icon[data-icon="analytics"]::before { content: '\f080'; /* fa-chart-bar */ }
+.nav-icon[data-icon="gallery"]::before { content: '\f302'; /* fa-images */ }
+.nav-icon[data-icon="settings"]::before { content: '\f013'; /* fa-cog */ }
+
+/* Action Icons */
+[data-icon="logout"]::before { content: '\f2f5'; /* fa-right-from-bracket */ }
+[data-icon="camera"]::before { content: '\f030'; /* fa-camera */ }
+[data-icon="clipboard"]::before { content: '\f328'; /* fa-clipboard */ }
+[data-icon="trash"]::before { content: '\f1f8'; /* fa-trash */ }
+[data-icon="rotate"]::before { content: '\f2f1'; /* fa-rotate */ }
+[data-icon="dollar"]::before { content: '\f155'; /* fa-dollar-sign */ }
+[data-icon="clock"]::before { content: '\f017'; /* fa-clock */ }
+[data-icon="target"]::before { content: '\f140'; /* fa-bullseye */ }
+[data-icon="heart"]::before { content: '\f004'; /* fa-heart */ }
+[data-icon="heart-outline"]::before { content: '\f004'; font-weight: 400; /* far fa-heart */ }
+[data-icon="wifi"]::before { content: '\f1eb'; /* fa-wifi */ }
+[data-icon="plug"]::before { content: '\f1e6'; /* fa-plug */ }
+[data-icon="leaf"]::before { content: '\f06c'; /* fa-leaf */ }
+[data-icon="paw"]::before { content: '\f1b0'; /* fa-paw */ }
+[data-icon="phone"]::before { content: '\f095'; /* fa-phone */ }
+[data-icon="envelope"]::before { content: '\f0e0'; /* fa-envelope */ }
+[data-icon="pen"]::before { content: '\f304'; /* fa-pen */ }
+[data-icon="eye"]::before { content: '\f06e'; /* fa-eye */ }
+[data-icon="bell"]::before { content: '\f0f3'; /* fa-bell */ }
+[data-icon="lock"]::before { content: '\f023'; /* fa-lock */ }
+[data-icon="shield"]::before { content: '\f3ed'; /* fa-shield-halved */ }
+[data-icon="warning"]::before { content: '\f071'; /* fa-triangle-exclamation */ }
+[data-icon="info"]::before { content: '\f05a'; /* fa-circle-info */ }
+[data-icon="check"]::before { content: '\f00c'; /* fa-check */ }
+[data-icon="xmark"]::before { content: '\f00d'; /* fa-xmark */ }
+[data-icon="search"]::before { content: '\f002'; /* fa-magnifying-glass */ }
+[data-icon="fire"]::before { content: '\f06d'; /* fa-fire */ }
+[data-icon="save"]::before { content: '\f0c7'; /* fa-floppy-disk */ }
+[data-icon="rocket"]::before { content: '\f135'; /* fa-rocket */ }
+[data-icon="hourglass"]::before { content: '\f252'; /* fa-hourglass-half */ }
+[data-icon="broadcast"]::before { content: '\f519'; /* fa-tower-broadcast */ }
+[data-icon="location"]::before { content: '\f3c5'; /* fa-location-dot */ }
+[data-icon="star"]::before { content: '\f005'; /* fa-star */ }
+[data-icon="user"]::before { content: '\f007'; /* fa-user */ }
+[data-icon="map"]::before { content: '\f279'; /* fa-map */ }
+
+/* Star rating - keep as is for now */
+.rating, .card-meta .rating, .info-rating, .quick-rating {
+    /* Stars will be handled separately */
+}
+
+/* Hide emoji text content when using data-icon attribute */
+[data-icon]::before {
+    margin-right: 0.5rem;
+}
+
+[data-icon]:not(:empty) {
+    font-size: 0;
+}
+
+[data-icon]:not(:empty)::before {
+    font-size: 1rem;
+}

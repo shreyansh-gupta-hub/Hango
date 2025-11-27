@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Choose Your Journey - Cafè Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0A0A0A;
+            color: #FAFAFA;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .bg-gradient {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(212, 175, 55, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(198, 139, 89, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(212, 175, 55, 0.1) 0%, transparent 50%);
+            animation: gradientShift 15s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { transform: scale(1) rotate(0deg); }
+            50% { transform: scale(1.1) rotate(5deg); }
+        }
+
+        .floating-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            animation: float 20s infinite;
+        }
+
+        .particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; top: 80%; animation-delay: 2s; }
+        .particle:nth-child(3) { left: 60%; top: 30%; animation-delay: 4s; }
+        .particle:nth-child(4) { left: 80%; top: 70%; animation-delay: 6s; }
+        .particle:nth-child(5) { left: 30%; top: 50%; animation-delay: 8s; }
+        .particle:nth-child(6) { left: 70%; top: 10%; animation-delay: 10s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateY(-100vh) translateX(50px); opacity: 0; }
+        }
+
+        /* Main Container */
+        .auth-choice-container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+            padding: 60px 20px;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease;
+        }
+
+        .logo-icon {
+            font-size: 2.5rem;
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: pulse 2s ease infinite;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Header */
+        .auth-choice-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .auth-choice-header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #FFFFFF 0%, #D4AF37 50%, #C68B59 100%);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .auth-choice-header p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.7);
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+
+        /* Choice Cards */
+        .choice-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 40px;
+            width: 100%;
+            max-width: 1000px;
+            margin-bottom: 60px;
+        }
+
+        .choice-card {
+            position: relative;
+            background: rgba(26, 26, 26, 0.6);
+            backdrop-filter: blur(30px);
+            border: 2px solid rgba(212, 175, 55, 0.2);
+            border-radius: 30px;
+            padding: 50px 40px;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            animation: fadeInUp 0.8s ease both;
+        }
+
+        .choice-card:nth-child(1) { animation-delay: 0.4s; }
+        .choice-card:nth-child(2) { animation-delay: 0.6s; }
+
+        .choice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(198, 139, 89, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .choice-card:hover::before {
+            opacity: 1;
+        }
+
+        .choice-card::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: 0;
+        }
+
+        .choice-card:hover::after {
+            opacity: 1;
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .choice-card:hover {
+            transform: translateY(-15px) scale(1.02);
+            border-color: #D4AF37;
+            box-shadow: 0 30px 80px rgba(212, 175, 55, 0.4),
+                        0 0 60px rgba(212, 175, 55, 0.2);
+        }
+
+        .choice-card-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .choice-icon-wrapper {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 30px;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.2), rgba(198, 139, 89, 0.2));
+            border: 2px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+
+        .choice-card:hover .choice-icon-wrapper {
+            transform: scale(1.1) rotate(5deg);
+            border-color: #D4AF37;
+            box-shadow: 0 0 40px rgba(212, 175, 55, 0.5);
+        }
+
+        .choice-icon-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            animation: pulse-ring 2s ease infinite;
+        }
+
+        .choice-card:hover .choice-icon-wrapper::before {
+            opacity: 0.3;
+        }
+
+        @keyframes pulse-ring {
+            0% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(1.1); opacity: 0.1; }
+            100% { transform: scale(1); opacity: 0.3; }
+        }
+
+        .choice-icon {
+            font-size: 3.5rem;
+            transition: all 0.5s ease;
+        }
+
+        .choice-card:hover .choice-icon {
+            transform: scale(1.2);
+            filter: drop-shadow(0 0 20px rgba(212, 175, 55, 0.8));
+        }
+
+        .choice-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #FFFFFF;
+            transition: all 0.3s ease;
+        }
+
+        .choice-card:hover h2 {
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .choice-card p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.8;
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .choice-features {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+            width: 100%;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+        }
+
+        .choice-card:hover .feature-item {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .feature-item i {
+            color: #D4AF37;
+            font-size: 1rem;
+        }
+
+        .choice-cta {
+            margin-top: 30px;
+            padding: 15px 35px;
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            border: none;
+            border-radius: 50px;
+            color: #1A1A1A;
+            font-weight: 600;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(10px);
+        }
+
+        .choice-card:hover .choice-cta {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .choice-cta i {
+            transition: transform 0.3s ease;
+        }
+
+        .choice-card:hover .choice-cta i {
+            transform: translateX(5px);
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(212, 175, 55, 0.8);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 12px 24px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 50px;
+            animation: fadeInUp 0.8s ease 0.8s both;
+        }
+
+        .back-link:hover {
+            color: #D4AF37;
+            border-color: #D4AF37;
+            transform: translateX(-5px);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .back-link i {
+            transition: transform 0.3s ease;
+        }
+
+        .back-link:hover i {
+            transform: translateX(-5px);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .auth-choice-container {
+                padding: 40px 20px;
+            }
+
+            .logo {
+                margin-bottom: 40px;
+            }
+
+            .logo-icon {
+                font-size: 2rem;
+            }
+
+            .logo-text {
+                font-size: 1.5rem;
+            }
+
+            .auth-choice-header {
+                margin-bottom: 40px;
+            }
+
+            .choice-cards {
+                gap: 30px;
+                grid-template-columns: 1fr;
+            }
+
+            .choice-card {
+                padding: 40px 30px;
+            }
+
+            .choice-icon-wrapper {
+                width: 100px;
+                height: 100px;
+            }
+
+            .choice-icon {
+                font-size: 3rem;
+            }
+
+            .choice-card h2 {
+                font-size: 1.75rem;
+            }
+
+            .choice-cta {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Animated Background -->
+    <div class="bg-animation">
+        <div class="bg-gradient"></div>
+        <div class="floating-particles">
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+            <div class="particle"></div>
+        </div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="auth-choice-container">
+        <!-- Logo -->
+        <div class="logo">
+            <span class="logo-icon"><i class="fas fa-mug-hot"></i></span>
+            <span class="logo-text">Cafè Finder</span>
+        </div>
+
+        <!-- Header -->
+        <div class="auth-choice-header">
+            <h1>Choose Your Journey</h1>
+            <p>Select the experience that's right for you</p>
+        </div>
+
+        <!-- Choice Cards -->
+        <div class="choice-cards">
+            <!-- Coffee Lover Card -->
+            <a href="user-auth.html" class="choice-card">
+                <div class="choice-card-content">
+                    <div class="choice-icon-wrapper">
+                        <div class="choice-icon">☕</div>
+                    </div>
+                    <h2>Coffee Lover</h2>
+                    <p>Discover amazing cafés, save your favorites, and explore the best coffee experiences</p>
+                    
+                    <div class="choice-features">
+                        <div class="feature-item">
+                            <i class="fas fa-map-marked-alt"></i>
+                            <span>Explore nearby cafés</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <span>Save your favorites</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-star"></i>
+                            <span>Read & write reviews</span>
+                        </div>
+                    </div>
+
+                    <div class="choice-cta">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+
+            <!-- Café Owner Card -->
+            <a href="owner-auth.html" class="choice-card">
+                <div class="choice-card-content">
+                    <div class="choice-icon-wrapper">
+                        <div class="choice-icon">🏪</div>
+                    </div>
+                    <h2>Café Owner</h2>
+                    <p>List your café, manage your profile, and reach thousands of coffee enthusiasts</p>
+                    
+                    <div class="choice-features">
+                        <div class="feature-item">
+                            <i class="fas fa-store"></i>
+                            <span>List your café</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <span>Track analytics</span>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-users"></i>
+                            <span>Reach more customers</span>
+                        </div>
+                    </div>
+
+                    <div class="choice-cta">
+                        <span>Get Started</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </div>
+                </div>
+            </a>
+        </div>
+
+        <!-- Back Link -->
+        <a href="index.html" class="back-link">
+            <i class="fas fa-arrow-left"></i>
+            <span>Back to Home</span>
+        </a>
+    </div>
+</body>
+</html>

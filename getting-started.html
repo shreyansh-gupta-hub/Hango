@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Getting Started - HANGO</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .guide-container {
+            max-width: 900px;
+            margin: 120px auto;
+            padding: 3rem;
+        }
+        .guide-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+        }
+        .guide-card h2 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+        }
+        .guide-card h3 {
+            color: var(--caramel);
+            margin: 1.5rem 0 1rem;
+            font-size: 1.5rem;
+        }
+        .guide-card p {
+            line-height: 1.8;
+            color: var(--beige);
+            margin-bottom: 1rem;
+        }
+        .guide-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .guide-card li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            color: var(--soft-white);
+        }
+        .guide-card li::before {
+            content: '☕';
+            position: absolute;
+            left: 0;
+        }
+        .page-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        .page-link {
+            background: linear-gradient(135deg, var(--mocha), var(--dark-mocha));
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .page-link:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+        .page-link h4 {
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+        .page-link p {
+            color: var(--beige);
+            font-size: 0.9rem;
+        }
+        code {
+            background: rgba(212, 175, 55, 0.2);
+            padding: 0.2rem 0.6rem;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Explore</a></li>
+                <li><a href="user-recommendations.html">Match</a></li>
+                <li><a href="social-tables.html">Social</a></li>
+                <li><a href="user-profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="guide-container">
+        <div class="guide-card fade-in">
+            <h2>🎉 Welcome to HANGO!</h2>
+            <p>A premium two-portal platform for discovering amazing cafés and managing your coffee business. This guide will help you navigate through all the features.</p>
+        </div>
+
+        <div class="guide-card fade-in">
+            <h2>👥 User Portal</h2>
+            
+            <h3>Discover Cafés</h3>
+            <p>Find your perfect coffee spot with our intuitive search and map features:</p>
+            <ul>
+                <li>Search by name, location, or vibe</li>
+                <li>Use location services to find nearby cafés</li>
+                <li>Filter by price, rating, and availability</li>
+                <li>View detailed information, menus, and reviews</li>
+            </ul>
+
+            <h3>Save Your Favorites</h3>
+            <p>Keep track of cafés you love:</p>
+            <ul>
+                <li>Click the heart icon on any café page</li>
+                <li>Access your saved cafés from your profile</li>
+                <li>All data is stored locally in your browser</li>
+            </ul>
+
+            <div class="page-links">
+                <a href="index.html" class="page-link">
+                    <h4>🏠 Homepage</h4>
+                    <p>Start your coffee journey</p>
+                </a>
+                <a href="map.html" class="page-link">
+                    <h4>🗺️ Map View</h4>
+                    <p>Explore cafés nearby</p>
+                </a>
+                <a href="cafe-details.html" class="page-link">
+                    <h4>☕ Café Details</h4>
+                    <p>View menus & reviews</p>
+                </a>
+                <a href="user-profile.html" class="page-link">
+                    <h4>👤 Profile</h4>
+                    <p>Your saved cafés</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="guide-card fade-in">
+            <h2>🏢 Owner Portal</h2>
+            
+            <h3>Getting Started</h3>
+            <p>Showcase your café to thousands of coffee lovers:</p>
+            <ul>
+                <li>Create an account with your café details</li>
+                <li>Add your café with photos and menu</li>
+                <li>Track views, saves, and ratings</li>
+                <li>Manage multiple locations</li>
+            </ul>
+
+            <h3>Dashboard Features</h3>
+            <p>Everything you need to manage your café presence:</p>
+            <ul>
+                <li><strong>Stats Overview:</strong> Track views, saves, and ratings</li>
+                <li><strong>Add Café:</strong> Upload images, menus, and location</li>
+                <li><strong>Gallery Manager:</strong> Organize your café photos</li>
+                <li><strong>Analytics:</strong> View performance metrics and trends</li>
+            </ul>
+
+            <div class="page-links">
+                <a href="owner-login.html" class="page-link">
+                    <h4>🔐 Login</h4>
+                    <p>Access your dashboard</p>
+                </a>
+                <a href="owner-dashboard-new.html" class="page-link">
+                    <h4>📊 Dashboard</h4>
+                    <p>Overview & stats</p>
+                </a>
+                <a href="owner-add-cafe.html" class="page-link">
+                    <h4>➕ Add Café</h4>
+                    <p>Create new listing</p>
+                </a>
+                <a href="owner-analytics.html" class="page-link">
+                    <h4>📈 Analytics</h4>
+                    <p>Performance insights</p>
+                </a>
+            </div>
+        </div>
+
+        <div class="guide-card fade-in">
+            <h2>🎨 Design Features</h2>
+            <p>Experience premium design elements throughout the platform:</p>
+            <ul>
+                <li><strong>Glassmorphism:</strong> Frosted glass panels with backdrop blur</li>
+                <li><strong>3D Elements:</strong> Floating cards, animated icons, depth effects</li>
+                <li><strong>Smooth Animations:</strong> Parallax scrolling, hover effects, transitions</li>
+                <li><strong>Micro-interactions:</strong> Button bounces, card tilts, shimmer effects</li>
+                <li><strong>Responsive Design:</strong> Perfect on desktop, tablet, and mobile</li>
+            </ul>
+        </div>
+
+        <div class="guide-card fade-in">
+            <h2>💡 Tips & Tricks</h2>
+            <ul>
+                <li>Enable location services for personalized café recommendations</li>
+                <li>Hover over café cards to see 3D tilt effects</li>
+                <li>Use filters on the map page to narrow your search</li>
+                <li>Save cafés to quickly access them later</li>
+                <li>Owners: Upload high-quality images for better engagement</li>
+                <li>Check analytics regularly to understand your audience</li>
+            </ul>
+        </div>
+
+        <div class="guide-card fade-in">
+            <h2>🚀 Quick Start</h2>
+            <p>Ready to begin? Here's what to do:</p>
+            <ol style="list-style: decimal; padding-left: 2rem;">
+                <li style="padding: 0.5rem 0;">Visit the <a href="index.html" style="color: var(--gold);">homepage</a> to explore featured cafés</li>
+                <li style="padding: 0.5rem 0;">Use the <a href="map.html" style="color: var(--gold);">map view</a> to find cafés near you</li>
+                <li style="padding: 0.5rem 0;">Click on any café to view details, menu, and reviews</li>
+                <li style="padding: 0.5rem 0;">Save your favorites by clicking the heart icon</li>
+                <li style="padding: 0.5rem 0;">Café owners: <a href="owner-signup.html" style="color: var(--gold);">Sign up</a> to list your café</li>
+            </ol>
+        </div>
+
+        <div class="guide-card fade-in" style="text-align: center;">
+            <h2>☕ Ready to Explore?</h2>
+            <p style="margin-bottom: 2rem;">Start discovering amazing coffee experiences today!</p>
+            <a href="index.html" class="btn-primary" style="display: inline-block;">Go to Homepage</a>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">☕</span>
+                    <span class="logo-text">HANGO</span>
+                </div>
+                <p class="footer-tagline">Discover the art of coffee, one café at a time</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Animate cards on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 0.6s ease-out forwards';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.guide-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,137 @@
+╔══════════════════════════════════════════════════════════════════════╗
+║              CAFÈ FINDER - QUICK REFERENCE CARD                      ║
+╚══════════════════════════════════════════════════════════════════════╝
+
+🔥 FIREBASE PROJECT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Project ID: cafehunt-e84a7
+Console: https://console.firebase.google.com/project/cafehunt-e84a7
+
+✅ Configuration: Already set up in firebase-config.js
+
+═══════════════════════════════════════════════════════════════════════
+
+🚀 3-STEP SETUP (5 minutes total)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Step 1: Enable Authentication (2 min)
+   → Firebase Console → Authentication → Get Started
+   → Sign-in method → Email/Password → Enable
+
+Step 2: Create Firestore (2 min)
+   → Firebase Console → Firestore Database → Create
+   → Test mode → Select region → Enable
+
+Step 3: Set Rules (1 min)
+   → Firestore → Rules → Copy from SETUP-GUIDE.md → Publish
+
+═══════════════════════════════════════════════════════════════════════
+
+📁 KEY FILES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Landing Page:
+   index.html              → Main landing page
+   auth-choice.html        → Choose account type
+   user-auth.html          → User login/signup
+   owner-auth.html         → Owner login/signup
+
+Configuration:
+   firebase-config.js      → Firebase config (ready!)
+   .env                    → Environment variables
+   .gitignore             → Protects sensitive files
+
+Documentation:
+   SETUP-GUIDE.md         → Quick setup instructions
+   README.md              → Complete overview
+   QUICK-REFERENCE.txt    → This file
+
+═══════════════════════════════════════════════════════════════════════
+
+🔄 USER FLOW
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Coffee Lover:
+   Landing → Get Started → Choose User → Signup → Main Website
+
+Café Owner:
+   Landing → Get Started → Choose Owner → Signup → Dashboard
+
+═══════════════════════════════════════════════════════════════════════
+
+💾 DATA STORAGE
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Firestore Collections:
+   users/{userId}          → Coffee lovers
+   owners/{ownerId}        → Café owners
+   cafes/{cafeId}          → Café listings (future)
+
+LocalStorage Keys:
+   userType                → "user" or "owner"
+   userId / ownerId        → Firebase UID
+   userName / cafeName     → Display name
+   userEmail / ownerEmail  → Email address
+
+═══════════════════════════════════════════════════════════════════════
+
+🧪 TESTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+1. Open: Landing-Page/Landing-Page/index.html
+2. Click: "Get Started" button
+3. Choose: Account type
+4. Create: Test account
+   Email: test@example.com
+   Password: test123456
+5. Verify: Redirect works
+6. Check: Firebase Console → Authentication
+
+═══════════════════════════════════════════════════════════════════════
+
+🐛 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Auth not working?
+   → Check Email/Password is enabled in Firebase Console
+   → Check browser console for errors
+
+Redirect not working?
+   → Verify file paths are correct
+   → Check target files exist
+
+Firestore errors?
+   → Ensure database is created
+   → Check rules are published
+
+═══════════════════════════════════════════════════════════════════════
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Quick Setup:        SETUP-GUIDE.md
+Complete Overview:  README.md
+Firebase Details:   ../FIREBASE-SETUP.md
+System Summary:     ../AUTH-SYSTEM-SUMMARY.md
+Complete Summary:   ../COMPLETE-SETUP-SUMMARY.md
+
+═══════════════════════════════════════════════════════════════════════
+
+✅ STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ Landing page created
+✅ Authentication system built
+✅ Firebase configured
+✅ Documentation complete
+⏳ Enable Firebase Auth (you do this)
+⏳ Create Firestore DB (you do this)
+⏳ Set security rules (you do this)
+
+═══════════════════════════════════════════════════════════════════════
+
+🎉 YOU'RE READY!
+
+Just complete the 3 steps above and your café finder is live!
+
+═══════════════════════════════════════════════════════════════════════

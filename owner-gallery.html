@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery Manager - HANGO Owner</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="owner-layout">
+        <aside class="owner-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="owner-dashboard-new.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="owner-add-cafe.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Café</span>
+                </a>
+                <a href="owner-gallery.html" class="nav-item active">
+                    <span class="nav-icon">🖼️</span>
+                    <span>Gallery</span>
+                </a>
+                <a href="owner-analytics.html" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="owner-main">
+            <header class="dashboard-header">
+                <h1>Gallery Manager</h1>
+                <button class="btn-primary">Upload Images</button>
+            </header>
+
+            <div class="gallery-grid-3d">
+                <div class="gallery-item-3d">
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <button class="gallery-action">✏️</button>
+                        <button class="gallery-action">🗑️</button>
+                    </div>
+                </div>
+                <div class="gallery-item-3d">
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <button class="gallery-action">✏️</button>
+                        <button class="gallery-action">🗑️</button>
+                    </div>
+                </div>
+                <div class="gallery-item-3d">
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <button class="gallery-action">✏️</button>
+                        <button class="gallery-action">🗑️</button>
+                    </div>
+                </div>
+                <div class="gallery-item-3d">
+                    <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <button class="gallery-action">✏️</button>
+                        <button class="gallery-action">🗑️</button>
+                    </div>
+                </div>
+                <div class="gallery-item-3d">
+                    <img src="https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <button class="gallery-action">✏️</button>
+                        <button class="gallery-action">🗑️</button>
+                    </div>
+                </div>
+                <div class="gallery-item-3d">
+                    <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=400" alt="Gallery">
+                    <div class="gallery-overlay">
+                        <button class="gallery-action">✏️</button>
+                        <button class="gallery-action">🗑️</button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/owner.js"></script>
+</body>
+</html>

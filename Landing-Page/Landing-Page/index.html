@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<!-- This site was created in Webflow. https://webflow.com -->
+<!-- Last Published: Thu Oct 16 2025 17:07:10 GMT+0000 (Coordinated Universal Time) -->
+<html data-wf-domain="mochar.webflow.io" data-wf-page="68b3c9ff2cbb0d5700951ab0" data-wf-site="68b3c9fd2cbb0d5700951a95" data-wf-status="1">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Cafè Finder - Discover Premium Coffee Experiences</title>
+    <meta content="Discover amazing cafés near you with Cafè Finder. Find premium coffee shops, explore menus, read reviews, and save your favorites. Your perfect coffee moment awaits!"
+        name="description" />
+    <meta content="Cafè Finder - Discover Premium Coffee Experiences" property="og:title" />
+    <meta content="Discover amazing cafés near you with Cafè Finder. Find premium coffee shops, explore menus, read reviews, and save your favorites. Your perfect coffee moment awaits!" property="og:description"
+    />
+    <meta content="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68db545571978730b3c7dc61_Shot%2024.webp" property="og:image" />
+    <meta content="Cafè Finder - Discover Premium Coffee Experiences" property="twitter:title" />
+    <meta content="Discover amazing cafés near you with Cafè Finder. Find premium coffee shops, explore menus, read reviews, and save your favorites. Your perfect coffee moment awaits!" property="twitter:description"
+    />
+    <meta content="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68db545571978730b3c7dc61_Shot%2024.webp" property="twitter:image" />
+    <meta property="og:type" content="website" />
+    <meta content="summary_large_image" name="twitter:card" />
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
+    <meta content="Webflow" name="generator" />
+    <link href="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/css/mochar.webflow.shared.b73466ec5.css" rel="stylesheet" type="text/css" />
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous" />
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        WebFont.load({
+            google: {
+                families: ["Instrument Sans:regular,500,600,700", "Outfit:regular,500,600,700,800", "Jost:regular,500,600,700"]
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        ! function(o, c) {
+            var n = c.documentElement,
+                t = " w-mod-";
+            n.className += t + "js", ("ontouchstart" in o || o.DocumentTouch && c instanceof DocumentTouch) && (n.className += t + "touch")
+        }(window, document);
+    </script>
+    <link href="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bce2a7a9420bb59ea6d84e_favicon.PNG" rel="shortcut icon" type="image/x-icon" />
+    <link href="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bce2edba2e9e3847e9a30f_thumbnail.PNG" rel="apple-touch-icon" />
+    <style>
+        /* Center align team cards */
+        .team-content-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Loading Screen -->
+    <div id="pageLoader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f1419 0%, #1a2332 50%, #2d3e50 100%); display: flex; align-items: center; justify-content: center; z-index: 99999; transition: opacity 0.5s ease;">
+        <div style="text-align: center;">
+            <div style="width: 80px; height: 80px; margin: 0 auto 2rem; position: relative;">
+                <div style="width: 60px; height: 50px; background: linear-gradient(135deg, #00d4ff, #4dd4ff); border-radius: 0 0 20px 20px; position: absolute; bottom: 0; left: 10px; animation: fillCup 2s ease-in-out infinite;"></div>
+                <div style="width: 20px; height: 25px; border: 4px solid #00d4ff; border-left: none; border-radius: 0 15px 15px 0; position: absolute; right: 0; top: 50%; transform: translateY(-50%);"></div>
+            </div>
+            <h2 style="font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, #00d4ff, #4dd4ff); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 0.5rem; animation: pulse 2s ease-in-out infinite;">HANGO</h2>
+            <p style="color: #b8c5d6; font-size: 1.1rem; animation: fadeInOut 2s ease-in-out infinite;">Brewing your experience...</p>
+        </div>
+    </div>
+    <style>
+        @keyframes fillCup {
+            0%, 100% { transform: translateY(10px); opacity: 0.8; }
+            50% { transform: translateY(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 1; }
+        }
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+    </style>
+    <script>
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                document.getElementById('pageLoader').style.opacity = '0';
+                setTimeout(() => {
+                    document.getElementById('pageLoader').style.display = 'none';
+                }, 500);
+            }, 500);
+        });
+        setTimeout(() => {
+            const loader = document.getElementById('pageLoader');
+            if (loader && loader.style.display !== 'none') {
+                loader.style.opacity = '0';
+                setTimeout(() => { loader.style.display = 'none'; }, 500);
+            }
+        }, 3000);
+    </script>
+    
+    <section class="hero"></section>
+        <div class="w-layout-blockcontainer container w-container">
+            
+                <div data-w-id="6fc910a0-6569-235d-4a16-b87454d5240e" class="hero-content-box">
+                    <div class="hero-video-box">
+                        <div class="hero-video-wrapper">
+                            <div data-poster-url="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95%2F68b91a0202b005693a177246_video-poster-00001.jpg" data-video-urls="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95%2F68b91a0202b005693a177246_video-transcode.mp4,https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95%2F68b91a0202b005693a177246_video-transcode.webm"
+                                data-autoplay="true" data-loop="true" data-wf-ignore="true" data-w-id="43c9b3b4-41ad-94a5-2ff7-75ca3ef97937" style="opacity:0" class="hero-video w-background-video w-background-video-atom"><video id="43c9b3b4-41ad-94a5-2ff7-75ca3ef97937-video" autoplay="" loop="" style="background-image:url(&quot;https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95%2F68b91a0202b005693a177246_video-poster-00001.jpg&quot;)"
+                                    muted="" playsinline="" data-wf-ignore="true" data-object-fit="cover"><source src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95%2F68b91a0202b005693a177246_video-transcode.mp4" data-wf-ignore="true"/><source src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95%2F68b91a0202b005693a177246_video-transcode.webm" data-wf-ignore="true"/></video></div>
+                        </div>
+                        <div data-w-id="682ff021-3d9d-77ae-792f-cd5e777dd494" style="opacity:0" class="video-title-text">
+                            <h6 class="video-title">Your Coffee Journey Starts Here</h6>
+                            <p class="hero-video-text">Discover, explore, and save your favorite coffee spots in one place.</p>
+                        </div>
+                    </div>
+                    <div class="hero-image-title-box">
+                        <div class="hero-thumbnail-box">
+                            <div class="hero-thumbnail-wrapper"><img class="hero-caffee-cup" src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c7bd7f004f49b7533cb6f0_Group%202.webp" alt="Cup" style="opacity:0" sizes="(max-width: 767px) 100vw, (max-width: 991px) 727.984375px, 939.984375px"
+                                    data-w-id="c54715a9-1938-dfd3-c219-1e02cd89eb49" loading="lazy" srcset="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c7bd7f004f49b7533cb6f0_Group%202-p-500.webp 500w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c7bd7f004f49b7533cb6f0_Group%202-p-800.webp 800w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c7bd7f004f49b7533cb6f0_Group%202-p-1080.webp 1080w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c7bd7f004f49b7533cb6f0_Group%202.webp 1179w"
+                                /></div>
+                        </div>
+                        <div data-w-id="eb94aebb-1a40-b97d-917c-a7b986ac16e7" style="opacity:0" class="hero-text-button-box">
+                            <h1 class="hero-main-title">Find Your Perfect Coffee Spot</h1>
+                            <a data-w-id="1d158b3c-c033-cd76-aac6-092472e0b6f8" href="auth-choice.html" class="coffee-button w-inline-block">
+                                <div class="button-text-wrapeer">
+                                    <div class="button-text">Get Started</div>
+                                    <div class="button-text-back">Get Started</div>
+                                </div>
+                            </a>
+                            <div>
+                                <br><br><br><br><br><br><br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="food-type">
+        <div class="food-type-content section-padding">
+            <div class="w-layout-blockcontainer container w-container">
+                <div class="food-content-wrapper">
+                    <div data-w-id="be2eb5d1-f5fe-f742-4720-b9c6a06555f2" style="opacity:0" class="section-title-area center">
+                        <div class="section-subtitle-box">
+                            <div class="subtitle-icon-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b908fc6fcdb81244506866_Group.png" loading="lazy" alt="Icon" class="coffee-left-icon" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9094e295fd2d422199046_Vector.png"
+                                    loading="lazy" alt="Icon" class="coffee-right-icon" /></div>
+                            <div class="subtitle-text">available foods</div>
+                        </div>
+                        <h2 class="section-title">type of coffee’s</h2>
+                    </div>
+                    <div class="food-type-card-wrapper"><a data-w-id="d39c4a4d-9838-6a45-2d35-2b112123424b" style="opacity:0" href="../map.html" class="single-food-card w-inline-block"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b925cff521d45b4053d933_031-coffee%20beans.svg" loading="lazy" style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Card Icon" class="food-card-icon"/><div class="food-card-title-text"><h3 class="food-card-title">Interactive Map</h3><p class="food-card-text">Explore cafés on an interactive 3D map with animated pins and filters.</p></div><div style="border-color:rgba(174,146,115,0.2)" class="food-card-border-shape"></div></a>
+                        <a
+                            data-w-id="a13bb289-5f11-9f3d-169a-8b995e1dbbd7" style="opacity:0" href="../index.html" class="single-food-card w-inline-block"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b94851b1286cf1c4a7b146_033-coffee.svg" loading="lazy" style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                alt="Card Icon" class="food-card-icon" />
+                            <div class="food-card-title-text">
+                                <h3 class="food-card-title">Save Favorites</h3>
+                                <p class="food-card-text">Save your favorite cafés and access them anytime from your profile.</p>
+                            </div>
+                            <div style="border-color:rgba(174,146,115,0.2)" class="food-card-border-shape"></div>
+                            </a><a data-w-id="4cfba8cf-29dc-d917-d1b2-d378d5b74d83" style="opacity:0" href="../cafe-details.html" class="single-food-card w-inline-block"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9481d46bf6f20096e0afb_004-sandwich.svg" loading="lazy" style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" alt="Card Icon" class="food-card-icon"/><div class="food-card-title-text"><h3 class="food-card-title">Detailed Info</h3><p class="food-card-text">View menus, reviews, hours, and amenities for every café.</p></div><div style="border-color:rgba(174,146,115,0.2)" class="food-card-border-shape"></div></a></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="About" class="mission-vission section-padding">
+        <div class="w-layout-blockcontainer container w-container">
+            <div data-w-id="4526b383-bf2c-ea23-f10c-ebb4a1ab80af" class="why-choose-content-box">
+                <div class="slider-content">
+                    <div data-w-id="4526b383-bf2c-ea23-f10c-ebb4a1ab80b1" style="opacity:0" class="slider-content-subtitle-title">
+                        <div class="section-subtitle-box">
+                            <div class="subtitle-icon-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b908fc6fcdb81244506866_Group.png" loading="lazy" alt="Icon" class="coffee-left-icon" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9094e295fd2d422199046_Vector.png"
+                                    loading="lazy" alt="Icon" class="coffee-right-icon" /></div>
+                            <div class="subtitle-text">About Cafè Finder</div>
+                        </div>
+                        <h2 class="mission-section-title">Your Ultimate Coffee Discovery Platform</h2>
+                    </div>
+                    <div data-w-id="4526b383-bf2c-ea23-f10c-ebb4a1ab80b8" style="opacity:0" class="s-ider-box-content"><img sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" srcset="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c6344458b353ecd4f79458_272555-p-500.webp 500w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c6344458b353ecd4f79458_272555-p-800.webp 800w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c6344458b353ecd4f79458_272555-p-1080.webp 1080w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c6344458b353ecd4f79458_272555.webp 1500w"
+                            alt="Thumbnail" src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c6344458b353ecd4f79458_272555.webp" loading="lazy" class="slider-thumbnail-image" />
+                        <div class="why-choose-slider">
+                            <div data-delay="4000" data-animation="outin" class="meta-slider w-slider" data-autoplay="true" data-easing="ease" data-hide-arrows="false" data-disable-swipe="false" data-autoplay-limit="0" data-nav-spacing="5" data-duration="500"
+                                data-infinite="true">
+                                <div class="meta-slider-mask w-slider-mask">
+                                    <div class="single-slider-item w-slide">
+                                        <div class="slider-item-content">
+                                            <div class="slider-icon"><img loading="lazy" src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c681d08051364d2bdcd2d3_068-tea%20bag.svg" alt="Icon" class="slider-svg-icon" /></div>
+                                            <div class="slider-title-text">
+                                                <h3 class="slider-content-title">Shaping Sustainable Future</h3>
+                                                <p class="slider-content-text">We aim to deliver pure dairy and food products, ensuring quality, sustainability, and customer trust worldwide.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-slide">
+                                        <div class="slider-item-content">
+                                            <div class="slider-icon"><img loading="lazy" src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c681d0f3599d418f0a055a_027-coffee%20cup.svg" alt="Icon" class="slider-svg-icon" /></div>
+                                            <div class="slider-title-text">
+                                                <h3 class="slider-content-title">Leading with Integrity</h3>
+                                                <p class="slider-content-text">Our vision is to innovate food production, nurture community well-being, and inspire healthier, eco-friendly living globally.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="w-slide">
+                                        <div class="slider-item-content">
+                                            <div class="slider-icon"><img loading="lazy" src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c681d0d1aff4d42af4808b_008-cafe.svg" alt="Icon" class="slider-svg-icon" /></div>
+                                            <div class="slider-title-text">
+                                                <h3 class="slider-content-title">Excellence Through Dedication</h3>
+                                                <p class="slider-content-text">From humble beginnings, we achieved global recognition, producing quality products while empowering farmers.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="slider-left-arrow w-slider-arrow-left">
+                                    <div class="w-icon-slider-left"></div>
+                                </div>
+                                <div class="slider-right-arrow w-slider-arrow-right">
+                                    <div class="w-icon-slider-right"></div>
+                                </div>
+                                <div class="slider-nav w-slider-nav w-slider-nav-invert w-round"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="why-choose-right-content">
+                    <div class="mission-section-thumbnail">
+                        <div data-w-id="a8ffd674-082b-e09d-9fc0-1a1b1b6dfda3" class="image-componant-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c634325d07d0c226b525b0_2498.webp" loading="lazy" alt="Image" sizes="(max-width: 767px) 100vw, (max-width: 991px) 728px, 940px" srcset="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c634325d07d0c226b525b0_2498-p-500.webp 500w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c634325d07d0c226b525b0_2498-p-800.webp 800w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c634325d07d0c226b525b0_2498-p-1080.webp 1080w, https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68c634325d07d0c226b525b0_2498.webp 1500w"
+                                class="componant-image" />
+                            <div class="image-componant-shape white"></div>
+                        </div>
+                    </div>
+                    <div data-w-id="4526b383-bf2c-ea23-f10c-ebb4a1ab80dd" style="opacity:0" class="why-choose-section-content">
+                        <p class="mission-text">Cafè Finder connects coffee lovers with amazing cafés. Discover new spots, explore detailed menus, read authentic reviews, and save your favorites. Whether you're looking for a cozy work space or the perfect espresso, we help you find your ideal coffee experience.</p>
+                        <a data-w-id="1d158b3c-c033-cd76-aac6-092472e0b6f8"
+                            href="../index.html" class="coffee-button w-inline-block">
+                            <div class="button-text-wrapeer">
+                                <div class="button-text">Start Exploring</div>
+                                <div class="button-text-back">Start Exploring</div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section class="food-type">
+        <div class="facelities section-padding">
+            <div class="w-layout-blockcontainer container w-container">
+                <div class="food-content-wrapper">
+                    <div data-w-id="21dbedf9-1674-e9f5-5d7c-d46ac4cd22ad" style="opacity:0" class="section-title-area">
+                        <div class="section-subtitle-box">
+                            <div class="subtitle-icon-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b908fc6fcdb81244506866_Group.png" loading="lazy" alt="Icon" class="coffee-left-icon" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9094e295fd2d422199046_Vector.png"
+                                    loading="lazy" alt="Icon" class="coffee-right-icon" /></div>
+                            <div class="subtitle-text">why choose us</div>
+                        </div>
+                        <h2 class="section-title">Taste the difference in every</h2>
+                    </div>
+                    <div class="facilities-content">
+                        <div class="facilities-top-card">
+                            <div data-w-id="768bf1b0-7a0b-ad65-10b5-7ac8346a17df" style="opacity:0" class="single-facilities-card"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb956e011c2b41cbc5c56b_008-cafe.svg" loading="lazy" style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Icon" class="facilities-card-icon" />
+                                <div class="facilities-car-title-text">
+                                    <h3 class="facilities-card-title">Comfortable seating</h3>
+                                    <p class="facilities-card-text">Our beans are roasted to perfection, highlighting smooth snd fragrance.</p>
+                                </div>
+                            </div>
+                            <div data-w-id="a51e0ddc-c3e1-2dde-f103-1c468c010d05" style="opacity:0" class="single-facilities-card"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb9702059e5d6ef46670b8_065-sandwich.svg" loading="lazy" style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Icon" class="facilities-card-icon" />
+                                <div class="facilities-car-title-text">
+                                    <h3 class="facilities-card-title">Free Wi-Fi</h3>
+                                    <p class="facilities-card-text">We roast each batch to highlight rich flavors—bold and fragrant.</p>
+                                </div>
+                            </div>
+                            <div data-w-id="758631eb-aa54-ea33-1ec5-3628e9cda1aa" style="opacity:0" class="single-facilities-card"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb9718a7c0f75e9d23ef92_028-moka%20pot.svg" loading="lazy" style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Icon" class="facilities-card-icon" />
+                                <div class="facilities-car-title-text">
+                                    <h3 class="facilities-card-title">Friendly Enviorment</h3>
+                                    <p class="facilities-card-text">We roast to perfection to capture full flavors balanced aromatic.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="facilities-top-card _02">
+                            <div data-w-id="873f5bef-d6ef-e443-2e3b-d9f3bb9328b0" style="opacity:0" class="single-facilities-card card-type-02"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb9734c1a817e7efcc990b_019-coffee%20cup.svg" loading="lazy" style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Icon" class="facilities-card-icon" />
+                                <div class="facilities-car-title-text">
+                                    <h3 class="facilities-card-title">Outdoor seating area</h3>
+                                    <p class="facilities-card-text card-type-02">Every bean is roasted to reveal pure taste—rich, smooth, and delightful. Enjoy our crafted selections and seasonal roasts.</p>
+                                </div>
+                            </div>
+                            <div data-w-id="873f5bef-d6ef-e443-2e3b-d9f3bb9328be" style="opacity:0" class="single-facilities-card card-type-02"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb9755e404342e80622bc0_061-orange%20juice.svg" loading="lazy" style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Icon" class="facilities-card-icon" />
+                                <div class="facilities-car-title-text">
+                                    <h3 class="facilities-card-title">Live music events</h3>
+                                    <p class="facilities-card-text card-type-02">We roast our beans with passion for flavor aromatic, bold, and lasting. Discover our signature specials and limited-time roasts.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section">
+        <div class="cta-content section-padding">
+            <div class="w-layout-blockcontainer container w-container">
+                <div class="cta-content-wrapper">
+                    <div data-w-id="9db65e86-06ea-17cc-affa-2e78a45ba6da" class="cta-content-box">
+                        <div class="cta-left-image">
+                            <div data-w-id="a8ffd674-082b-e09d-9fc0-1a1b1b6dfda3" class="image-componant-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb9ef24c2d85bc942dc914_cta%20image%20left.avif" loading="lazy" alt="Image" class="componant-image" />
+                                <div class="image-componant-shape black"></div>
+                            </div>
+                        </div>
+                        <div class="cta-middle-content">
+                            <div data-w-id="9db65e86-06ea-17cc-affa-2e78a45ba6de" class="section-title-area center">
+                                <div class="section-subtitle-box">
+                                    <div class="subtitle-icon-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b908fc6fcdb81244506866_Group.png" loading="lazy" alt="Icon" class="coffee-left-icon" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9094e295fd2d422199046_Vector.png"
+                                            loading="lazy" alt="Icon" class="coffee-right-icon" /></div>
+                                    <div class="subtitle-text white">get in touch</div>
+                                </div>
+                                <h2 class="section-title-white">Catch us here</h2>
+                            </div>
+                            <div data-w-id="9db65e86-06ea-17cc-affa-2e78a45ba6e3" class="cta-contact-button">
+                                <div class="contact-text-number">
+                                    <div class="number-note">Call us:</div><a href="tel:+919479915988" class="contact-number-title">+919479915988</a></div>
+                                <div class="contact-text-number">
+                                    <div class="number-note">&</div><a href="tel:+917566755710" class="contact-number-title">+917566755710</a></div>
+                                
+                                
+                            </div>
+                        </div>
+                        <div class="cta-right-image">
+                            <div data-w-id="a8ffd674-082b-e09d-9fc0-1a1b1b6dfda3" class="image-componant-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bb9f69e365f04a1dcbae45_cta%20Image%20Right.avif" loading="lazy" alt="Image" class="componant-image" />
+                                <div class="image-componant-shape black"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="gallery section-padding">
+        <div class="gallery-content-wrapper">
+            <div data-w-id="00360a7e-8b99-82cb-4227-339cd9b6bee3" style="opacity:0" class="gallery-section-title-area">
+                <div class="section-subtitle-box">
+                    <div class="subtitle-icon-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b908fc6fcdb81244506866_Group.png" loading="lazy" alt="Icon" class="coffee-left-icon" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9094e295fd2d422199046_Vector.png"
+                            loading="lazy" alt="Icon" class="coffee-right-icon" /></div>
+                    <div class="subtitle-text">Our Gallery</div>
+                </div>
+                <h2 class="section-title gallery-section-title">Moments at Our Cafe</h2>
+            </div>
+            <div class="gallery-content">
+                <div class="single-gallery-item"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bba6ae312fd459dede53e1_01.avif" loading="lazy" alt="Single Gallery Image" class="single-gallery-image" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bba71bbf4020e6dc725694_02.avif"
+                        loading="lazy" alt="Single Gallery Image" class="single-gallery-image" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bba72a49ed2b8f877fce9d_03.avif" loading="lazy" alt="Single Gallery Image" class="single-gallery-image"
+                    /></div>
+                <div class="single-gallery-item"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bba6ae312fd459dede53e1_01.avif" loading="lazy" alt="Single Gallery Image" class="single-gallery-image" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bba71bbf4020e6dc725694_02.avif"
+                        loading="lazy" alt="Single Gallery Image" class="single-gallery-image" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68bba72a49ed2b8f877fce9d_03.avif" loading="lazy" alt="Single Gallery Image" class="single-gallery-image"
+                    /></div>
+            </div>
+        </div>
+        
+    </section>
+    <section id="Team" class="team">
+        <div class="team-content section-padding">
+            <div class="w-layout-blockcontainer container w-container">
+                <div class="team-content-wrapper">
+                    <div data-w-id="aa380daf-f6d5-1e8e-806b-50a00a31551a" style="opacity:0" class="section-title-area">
+                        <div class="section-subtitle-box">
+                            <div class="subtitle-icon-box"><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b908fc6fcdb81244506866_Group.png" loading="lazy" alt="Icon" class="coffee-left-icon" /><img src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/68b9094e295fd2d422199046_Vector.png"
+                                    loading="lazy" alt="Icon" class="coffee-right-icon" /></div>
+                            <div class="subtitle-text">our team</div>
+                        </div>
+                        <h2 class="section-title">meet with avengers</h2>
+                    </div>
+                    <div data-w-id="aa380daf-f6d5-1e8e-806b-50a00a31551f" class="team-content-box">
+                        <div data-w-id="a9b6bae8-fcd4-800b-b6a5-355dbcf106d8" class="single-team-card card-01">
+                            <div class="team-image-wrapper"><img src="../d3e54v103j8qbb.cloudfront.net/img/WhatsApp Image 2025-11-28 at 00.53.33.jpeg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Team Member Image" class="team-member-image" /></div>
+                            <div style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                class="team-meta-box">
+                                <div class="member-name-designation">
+                                    <div class="member-designation">Ideator</div>
+                                    <h3 class="member-title">Arihant Jain</h3>
+                                </div><a data-w-id="4eccf15e-ce03-0ced-bd00-093db5cce1de" href="https://www.instagram.com/arihantttt_jainnnn?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="team-social-link footer-social-link w-inline-block"><svg class="front-social-icon" style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><svg class="back-social-icon" style="-webkit-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div>
+                        </div>
+                        <div data-w-id="62f66215-6793-28f0-721c-a022169a2ab4" class="single-team-card card-02">
+                            <div class="team-image-wrapper"><img src="../d3e54v103j8qbb.cloudfront.net/img/WhatsApp Image 2025-11-28 at 00.57.27.jpeg" loading="lazy" style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                    alt="Team Member Image" class="team-member-image" /></div>
+                            <div style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
+                                class="team-meta-box">
+                                <div class="member-name-designation">
+                                    <div class="member-designation">Visionary</div>
+                                    <h3 class="member-title">Harshita Bhatt</h3>
+                                </div><a data-w-id="62f66215-6793-28f0-721c-a022169a2abd" href="https://www.instagram.com/harxhita_08?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="team-social-link footer-social-link w-inline-block"><svg class="front-social-icon" style="-webkit-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg><svg class="back-social-icon" style="-webkit-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 30px, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+
+    
+    <script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=68b3c9fd2cbb0d5700951a95" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/js/webflow.schunk.57d5559d2f0cd9f8.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/js/webflow.schunk.1fbe85c4cb5802fc.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/js/webflow.schunk.b4435221be879eb3.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/js/webflow.schunk.121b0d7ff03e0f4a.js" type="text/javascript"></script>
+    <script src="https://cdn.prod.website-files.com/68b3c9fd2cbb0d5700951a95/js/webflow.22b47889.168d7f425f117d26.js" type="text/javascript"></script>
+    <script>
+        // Remove Webflow badge and make all elements visible
+        function fixVisibility() {
+            // Remove Webflow badge
+            const badges = document.querySelectorAll('.w-webflow-badge, a[href*="webflow.com?utm"]');
+            badges.forEach(badge => badge.remove());
+            
+            // Make all elements visible
+            document.querySelectorAll('[style*="opacity"]').forEach(el => {
+                el.style.opacity = '1';
+                el.style.visibility = 'visible';
+            });
+            
+            // Specifically target hero elements
+            const selectors = [
+                '.hero-shape-content', '.hero-shape-text', '.hero-caffee-cup',
+                '.hero-thumbnail-wrapper', '.hero-video', '.video-title-text',
+                '.hero-text-button-box'
+            ];
+            
+            selectors.forEach(selector => {
+                const el = document.querySelector(selector);
+                if (el) {
+                    el.style.opacity = '1';
+                    el.style.visibility = 'visible';
+                    el.style.display = 'block';
+                }
+            });
+            
+            // Force all images visible
+            document.querySelectorAll('img').forEach(img => {
+                img.style.opacity = '1';
+                img.style.visibility = 'visible';
+            });
+        }
+        
+        // Run on load
+        window.addEventListener('load', fixVisibility);
+        window.addEventListener('DOMContentLoaded', fixVisibility);
+        
+        // Run immediately and keep checking
+        setTimeout(fixVisibility, 100);
+        setTimeout(fixVisibility, 500);
+        setTimeout(fixVisibility, 1000);
+        setInterval(fixVisibility, 2000);
+    </script>
+</body>
+
+</html>
+<style>
+/* Hide Webflow badge/watermark */
+.w-webflow-badge,
+.w-badge,
+a[href*="webflow.com"],
+a[href*="webflow"],
+[class*="webflow-badge"],
+[class*="w-badge"] {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none !important;
+}
+
+/* Hide navbar */
+nav,
+.navbar,
+header,
+[role="navigation"] {
+    display: none !important;
+}
+
+/* Remove fade animations */
+body,
+body * {
+    animation: none !important;
+    transition: none !important;
+}
+
+/* Ensure full opacity */
+body,
+section,
+div,
+main {
+    opacity: 1 !important;
+}
+</style>

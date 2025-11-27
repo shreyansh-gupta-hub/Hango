@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Owner Login/Signup - Cafè Finder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #1A1A1A 0%, #2D2416 100%);
+            color: #FAFAFA;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coffee-particles {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+        }
+        
+        .particle {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background: radial-gradient(circle, #D4AF37, transparent);
+            border-radius: 50%;
+            animation: float-particle 10s ease-in-out infinite;
+        }
+        
+        @keyframes float-particle {
+            0%, 100% { transform: translate(0, 0); opacity: 0.3; }
+            25% { transform: translate(20px, -30px); opacity: 0.6; }
+            50% { transform: translate(-10px, -60px); opacity: 0.8; }
+            75% { transform: translate(30px, -40px); opacity: 0.5; }
+        }
+        
+        .auth-container {
+            position: relative;
+            z-index: 10;
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .auth-card {
+            background: rgba(26, 26, 26, 0.8);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+        }
+        
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .logo {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .auth-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .auth-header p {
+            color: #E8D5C4;
+        }
+        
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #FAFAFA;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+        
+        .tab-btn.active {
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            color: #1A1A1A;
+            border-color: transparent;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #E8D5C4;
+        }
+        
+        .form-group input {
+            width: 100%;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            color: #FAFAFA;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: #D4AF37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, #D4AF37, #C68B59);
+            color: #1A1A1A;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.4);
+        }
+        
+        .error-message {
+            background: rgba(244, 67, 54, 0.2);
+            border: 1px solid rgba(244, 67, 54, 0.5);
+            color: #ff6b6b;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .success-message {
+            background: rgba(76, 175, 80, 0.2);
+            border: 1px solid rgba(76, 175, 80, 0.5);
+            color: #4CAF50;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .back-link {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        
+        .back-link a {
+            color: #D4AF37;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .back-link a:hover {
+            color: #C68B59;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            text-align: center;
+            margin: 1.5rem 0;
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .divider span {
+            padding: 0 1rem;
+            font-size: 0.875rem;
+        }
+
+        .btn-google {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: white;
+            color: #3c4043;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn-google:hover {
+            background: #f8f9fa;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-google svg {
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="coffee-particles">
+        <div class="particle" style="left: 10%; top: 20%; animation-delay: 0s;"></div>
+        <div class="particle" style="left: 20%; top: 80%; animation-delay: 2s;"></div>
+        <div class="particle" style="left: 40%; top: 40%; animation-delay: 4s;"></div>
+        <div class="particle" style="left: 60%; top: 60%; animation-delay: 1s;"></div>
+        <div class="particle" style="left: 80%; top: 30%; animation-delay: 3s;"></div>
+        <div class="particle" style="left: 90%; top: 70%; animation-delay: 5s;"></div>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <div class="logo">🏪</div>
+                <h2>Café Owner</h2>
+                <p>Manage your café business</p>
+            </div>
+
+            <div class="tabs">
+                <button class="tab-btn active" onclick="switchTab('login')">Login</button>
+                <button class="tab-btn" onclick="switchTab('signup')">Sign Up</button>
+            </div>
+
+            <div id="error-message" class="error-message"></div>
+            <div id="success-message" class="success-message"></div>
+
+            <!-- Login Form -->
+            <form id="login-form" class="auth-form active">
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="login-email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="login-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Login</button>
+            </form>
+
+            <!-- Divider -->
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <!-- Google Sign In Button -->
+            <button type="button" class="btn-google" id="google-signin-btn">
+                <svg width="18" height="18" viewBox="0 0 18 18" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17.64 9.2c0-.637-.057-1.251-.164-1.84H9v3.481h4.844c-.209 1.125-.843 2.078-1.796 2.717v2.258h2.908c1.702-1.567 2.684-3.874 2.684-6.615z" fill="#4285F4"/>
+                    <path d="M9.003 18c2.43 0 4.467-.806 5.956-2.18L12.05 13.56c-.806.54-1.836.86-3.047.86-2.344 0-4.328-1.584-5.036-3.711H.96v2.332C2.44 15.983 5.485 18 9.003 18z" fill="#34A853"/>
+                    <path d="M3.964 10.712c-.18-.54-.282-1.117-.282-1.71 0-.593.102-1.17.282-1.71V4.96H.957C.347 6.175 0 7.55 0 9.002c0 1.452.348 2.827.957 4.042l3.007-2.332z" fill="#FBBC05"/>
+                    <path d="M9.003 3.58c1.321 0 2.508.454 3.44 1.345l2.582-2.58C13.464.891 11.428 0 9.003 0 5.485 0 2.44 2.017.96 4.958L3.967 7.29c.708-2.127 2.692-3.71 5.036-3.71z" fill="#EA4335"/>
+                </svg>
+                <span>Continue with Google</span>
+            </button>
+
+            <!-- Signup Form -->
+            <form id="signup-form" class="auth-form">
+                <div class="form-group">
+                    <label>Café Name</label>
+                    <input type="text" id="signup-cafe-name" placeholder="Your Café Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Owner Name</label>
+                    <input type="text" id="signup-owner-name" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="signup-email" placeholder="your@email.com" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="signup-password" placeholder="••••••••" required>
+                </div>
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div class="back-link">
+                <a href="auth-choice.html">← Back to Account Type</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfile, GoogleAuthProvider, signInWithPopup } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
+        import { getFirestore, doc, setDoc, getDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        import { getAnalytics } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-analytics.js';
+        import { firebaseConfig } from './firebase-config.js';
+
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+        const analytics = getAnalytics(app);
+        const googleProvider = new GoogleAuthProvider();
+
+        // Tab switching
+        window.switchTab = function(tab) {
+            const loginForm = document.getElementById('login-form');
+            const signupForm = document.getElementById('signup-form');
+            const tabBtns = document.querySelectorAll('.tab-btn');
+            
+            tabBtns.forEach(btn => btn.classList.remove('active'));
+            
+            if (tab === 'login') {
+                loginForm.classList.add('active');
+                signupForm.classList.remove('active');
+                tabBtns[0].classList.add('active');
+            } else {
+                signupForm.classList.add('active');
+                loginForm.classList.remove('active');
+                tabBtns[1].classList.add('active');
+            }
+            
+            hideMessages();
+        };
+
+        function showError(message) {
+            const errorDiv = document.getElementById('error-message');
+            errorDiv.textContent = message;
+            errorDiv.style.display = 'block';
+            setTimeout(() => errorDiv.style.display = 'none', 5000);
+        }
+
+        function showSuccess(message) {
+            const successDiv = document.getElementById('success-message');
+            successDiv.textContent = message;
+            successDiv.style.display = 'block';
+        }
+
+        function hideMessages() {
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('success-message').style.display = 'none';
+        }
+
+        // Login
+        document.getElementById('login-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
+            
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            
+            try {
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                showSuccess('Login successful! Redirecting...');
+                
+                // Store owner info
+                localStorage.setItem('userType', 'owner');
+                localStorage.setItem('ownerId', userCredential.user.uid);
+                localStorage.setItem('ownerEmail', userCredential.user.email);
+                localStorage.setItem('ownerLoggedIn', 'true');
+                
+                // Redirect to new owner dashboard
+                setTimeout(() => {
+                    window.location.href = '../../owner-dashboard-new.html';
+                }, 1500);
+            } catch (error) {
+                showError(error.message);
+            }
+        });
+
+        // Signup
+        document.getElementById('signup-form').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            hideMessages();
+            
+            const cafeName = document.getElementById('signup-cafe-name').value;
+            const ownerName = document.getElementById('signup-owner-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            
+            try {
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                
+                // Update profile with café name
+                await updateProfile(userCredential.user, {
+                    displayName: cafeName
+                });
+                
+                // Save owner data to Firestore
+                await setDoc(doc(db, 'owners', userCredential.user.uid), {
+                    cafeName: cafeName,
+                    ownerName: ownerName,
+                    email: email,
+                    type: 'owner',
+                    createdAt: new Date().toISOString(),
+                    cafes: []
+                });
+                
+                showSuccess('Account created! Redirecting...');
+                
+                // Store owner info
+                localStorage.setItem('userType', 'owner');
+                localStorage.setItem('ownerId', userCredential.user.uid);
+                localStorage.setItem('ownerEmail', email);
+                localStorage.setItem('cafeName', cafeName);
+                localStorage.setItem('ownerLoggedIn', 'true');
+                
+                // Redirect to new owner dashboard
+                setTimeout(() => {
+                    window.location.href = '../../owner-dashboard-new.html';
+                }, 1500);
+            } catch (error) {
+                showError(error.message);
+            }
+        });
+
+        // Google Sign In
+        document.getElementById('google-signin-btn').addEventListener('click', async () => {
+            hideMessages();
+            
+            try {
+                const result = await signInWithPopup(auth, googleProvider);
+                const user = result.user;
+                
+                // Check if owner document exists
+                const ownerDoc = await getDoc(doc(db, 'owners', user.uid));
+                
+                if (!ownerDoc.exists()) {
+                    // Create new owner document with default café name
+                    const cafeName = user.displayName || 'My Café';
+                    
+                    await setDoc(doc(db, 'owners', user.uid), {
+                        cafeName: cafeName,
+                        ownerName: user.displayName || 'Owner',
+                        email: user.email,
+                        type: 'owner',
+                        createdAt: new Date().toISOString(),
+                        cafes: [],
+                        photoURL: user.photoURL || ''
+                    });
+                }
+                
+                showSuccess('Google sign-in successful! Redirecting...');
+                
+                // Store owner info
+                const ownerData = ownerDoc.exists() ? ownerDoc.data() : { cafeName: user.displayName || 'My Café' };
+                localStorage.setItem('userType', 'owner');
+                localStorage.setItem('ownerId', user.uid);
+                localStorage.setItem('ownerEmail', user.email);
+                localStorage.setItem('cafeName', ownerData.cafeName);
+                localStorage.setItem('ownerLoggedIn', 'true');
+                
+                // Redirect to owner dashboard
+                setTimeout(() => {
+                    window.location.href = '../../owner-dashboard-new.html';
+                }, 1500);
+            } catch (error) {
+                console.error('Google sign-in error:', error);
+                showError(error.message);
+            }
+        });
+    </script>
+</body>
+</html>

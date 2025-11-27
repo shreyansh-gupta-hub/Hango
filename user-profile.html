@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile - HANGO</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/user-profile-blue.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Explore</a></li>
+                <li><a href="user-recommendations.html">Match</a></li>
+                <li><a href="social-tables.html">Social</a></li>
+                <li><a href="user-profile.html" class="active">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="profile-page">
+        <div class="container">
+            <!-- Profile Card -->
+            <div class="profile-card-minimal">
+                <div class="profile-avatar" id="avatar-container">
+                    <img id="profile-avatar" src="https://i.pravatar.cc/150?img=12" alt="Profile">
+                    <div class="avatar-upload-overlay">
+                        <label for="avatar-upload" class="avatar-upload-label">
+                            <span class="upload-icon"><i class="fas fa-camera"></i></span>
+                            <span class="upload-text">Change Photo</span>
+                        </label>
+                        <input type="file" id="avatar-upload" accept="image/*" hidden>
+                    </div>
+                </div>
+                <h2 class="profile-name" id="profile-name">Alex Johnson</h2>
+                <p class="profile-email" id="profile-email">alex.johnson@email.com</p>
+                <button class="btn-secondary" id="edit-profile-btn">Edit Profile</button>
+                <button class="btn-secondary" id="logout-btn" style="margin-top: 1rem; background: rgba(244, 67, 54, 0.2); border-color: rgba(244, 67, 54, 0.5);">Logout</button>
+            </div>
+
+            <!-- Edit Profile Modal -->
+            <div class="modal" id="edit-profile-modal">
+                <div class="modal-content">
+                    <button class="modal-close" id="close-modal">×</button>
+                    <h2 style="margin-bottom: 2rem;">Edit Profile</h2>
+                    
+                    <div id="edit-error-message" class="error-message"></div>
+                    <div id="edit-success-message" class="success-message"></div>
+                    
+                    <form id="edit-profile-form">
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="edit-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="edit-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label>New Password (leave blank to keep current)</label>
+                            <input type="password" id="edit-password" placeholder="••••••••">
+                        </div>
+                        <button type="submit" class="btn-primary">Save Changes</button>
+                    </form>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <script src="scripts/profile.js"></script>
+</body>
+</html>

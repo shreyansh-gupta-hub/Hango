@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Café - HANGO Owner Portal</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/owner-portal.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="owner-portal">
+    <div class="coffee-grain-bg"></div>
+
+    <!-- Sidebar -->
+    <aside class="owner-sidebar-new">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <span class="owner-badge">Owner Portal</span>
+        </div>
+        
+        <nav class="sidebar-nav-new">
+            <a href="owner-dashboard-new.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="owner-cafes.html" class="nav-item">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">My Cafés</span>
+            </a>
+            <a href="owner-add-cafe-new.html" class="nav-item active">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Add Café</span>
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="owner-analytics-new.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Analytics</span>
+            </a>
+            <a href="owner-gallery-new.html" class="nav-item">
+                <span class="nav-icon">🖼️</span>
+                <span class="nav-text">Gallery</span>
+            </a>
+            <a href="owner-settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="owner-profile-mini">
+                <div class="profile-avatar-mini">JD</div>
+                <div class="profile-info-mini">
+                    <span class="profile-name-mini">John's Café</span>
+                    <span class="profile-status">Verified</span>
+                </div>
+            </div>
+            <button class="logout-btn-mini" id="logout-btn">
+                <span>🚪</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="owner-main-new">
+        <header class="dashboard-header-new">
+            <div class="header-left">
+                <h1 class="page-title">Add New Café</h1>
+                <p class="page-subtitle">Create a new café listing that will appear on the user portal</p>
+            </div>
+            <div class="header-right">
+                <div class="sync-indicator">
+                    <div class="sync-pulse"></div>
+                    <span class="sync-text">Ready to Sync</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Form Container -->
+        <div class="cafe-form-container">
+            <form class="cafe-form-new" id="cafeForm">
+                <!-- Basic Information -->
+                <div class="form-section-new">
+                    <div class="form-section-header">
+                        <h2 class="form-section-title">Basic Information</h2>
+                        <span class="sync-label">📡 Syncs to User Portal</span>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group-new">
+                            <label class="form-label">Café Name *</label>
+                            <input type="text" class="form-input" placeholder="e.g., Artisan Brew House" required>
+                        </div>
+                        
+                        <div class="form-group-new">
+                            <label class="form-label">Category *</label>
+                            <select class="form-input" required>
+                                <option value="">Select category</option>
+                                <option value="cafe">Café</option>
+                                <option value="bakery">Bakery</option>
+                                <option value="bistro">Bistro</option>
+                                <option value="lounge">Lounge</option>
+                                <option value="roastery">Roastery</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group-new">
+                        <label class="form-label">Description *</label>
+                        <textarea class="form-input" rows="4" placeholder="Tell customers about your café's unique atmosphere, specialty drinks, and what makes it special..." required></textarea>
+                        <span class="form-hint">This will be the first thing users see</span>
+                    </div>
+                    
+                    <div class="form-grid">
+                        <div class="form-group-new">
+                            <label class="form-label">Price Range *</label>
+                            <select class="form-input" required>
+                                <option value="">Select price range</option>
+                                <option value="$">$ - Budget Friendly</option>
+                                <option value="$$">$$ - Moderate</option>
+                                <option value="$$$">$$$ - Premium</option>
+                                <option value="$$$$">$$$$ - Luxury</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group-new">
+                            <label class="form-label">Phone Number</label>
+                            <input type="tel" class="form-input" placeholder="+1 (555) 123-4567">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Timings -->
+                <div class="form-section-new">
+                    <div class="form-section-header">
+                        <h2 class="form-section-title">Opening Hours</h2>
+                        <span class="sync-label">📡 Syncs to User Portal</span>
+                    </div>
+                    
+                    <div class="timings-grid">
+                        <div class="timing-row">
+                            <span class="day-label">Monday</span>
+                            <input type="time" class="form-input-small" value="08:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="20:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                        <div class="timing-row">
+                            <span class="day-label">Tuesday</span>
+                            <input type="time" class="form-input-small" value="08:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="20:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                        <div class="timing-row">
+                            <span class="day-label">Wednesday</span>
+                            <input type="time" class="form-input-small" value="08:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="20:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                        <div class="timing-row">
+                            <span class="day-label">Thursday</span>
+                            <input type="time" class="form-input-small" value="08:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="20:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                        <div class="timing-row">
+                            <span class="day-label">Friday</span>
+                            <input type="time" class="form-input-small" value="08:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="22:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                        <div class="timing-row">
+                            <span class="day-label">Saturday</span>
+                            <input type="time" class="form-input-small" value="09:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="22:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                        <div class="timing-row">
+                            <span class="day-label">Sunday</span>
+                            <input type="time" class="form-input-small" value="09:00">
+                            <span class="time-separator">to</span>
+                            <input type="time" class="form-input-small" value="20:00">
+                            <label class="checkbox-label">
+                                <input type="checkbox"> Closed
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Location -->
+                <div class="form-section-new">
+                    <div class="form-section-header">
+                        <h2 class="form-section-title">Location</h2>
+                        <span class="sync-label">📡 Syncs to User Portal</span>
+                    </div>
+                    
+                    <div class="form-group-new">
+                        <label class="form-label">Address *</label>
+                        <input type="text" class="form-input" placeholder="123 Main Street, City, State, ZIP" required>
+                    </div>
+                    
+                    <div class="map-picker-container">
+                        <div class="map-picker-header">
+                            <span class="map-icon">📍</span>
+                            <span>Click on the map to set precise location</span>
+                        </div>
+                        <div id="map" class="map-picker-3d-new"></div>
+                        <div class="map-coordinates">
+                            <span>Lat: <strong id="lat">0.0000</strong></span>
+                            <span>Lng: <strong id="lng">0.0000</strong></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Images -->
+                <div class="form-section-new">
+                    <div class="form-section-header">
+                        <h2 class="form-section-title">Café Images</h2>
+                        <span class="sync-label">📡 Syncs to User Portal</span>
+                    </div>
+                    
+                    <div class="upload-zone-new" id="imageUploadZone">
+                        <div class="upload-icon-new">📸</div>
+                        <h3 class="upload-title">Drag & Drop Images</h3>
+                        <p class="upload-subtitle">or click to browse</p>
+                        <input type="file" id="imageUpload" multiple accept="image/*" hidden>
+                        <span class="upload-hint">Supports: JPG, PNG, WebP (Max 5MB each)</span>
+                    </div>
+                    
+                    <div class="image-preview-grid" id="imagePreviewGrid"></div>
+                </div>
+
+                <!-- Menu Upload -->
+                <div class="form-section-new">
+                    <div class="form-section-header">
+                        <h2 class="form-section-title">Menu</h2>
+                        <span class="sync-label">📡 Syncs to User Portal</span>
+                    </div>
+                    
+                    <div class="upload-zone-new menu-upload-zone" id="menuUploadZone">
+                        <div class="upload-icon-new">📋</div>
+                        <h3 class="upload-title">Upload Menu</h3>
+                        <p class="upload-subtitle">PDF or Images</p>
+                        <input type="file" id="menuUpload" multiple accept="image/*,.pdf" hidden>
+                        <span class="upload-hint">Supports: PDF, JPG, PNG (Max 10MB)</span>
+                    </div>
+                    
+                    <div class="menu-preview-grid" id="menuPreviewGrid"></div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions-new">
+                    <div class="sync-notice">
+                        <span class="sync-icon">✓</span>
+                        <span>Changes will reflect on User Portal immediately</span>
+                    </div>
+                    <div class="action-buttons">
+                        <button type="button" class="btn-secondary-new">
+                            <span>💾</span>
+                            <span>Save Draft</span>
+                        </button>
+                        <button type="button" class="btn-preview">
+                            <span>👁️</span>
+                            <span>Preview on User Screen</span>
+                        </button>
+                        <button type="submit" class="btn-primary-new">
+                            <span>🚀</span>
+                            <span>Save & Publish Live</span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Success Modal -->
+    <div class="modal-overlay" id="successModal">
+        <div class="modal-content-new">
+            <div class="modal-icon success">✓</div>
+            <h2 class="modal-title">Café Published Successfully!</h2>
+            <p class="modal-message">Your café is now live on the user portal</p>
+            <div class="modal-actions">
+                <button class="btn-secondary-new" onclick="window.location.href='owner-dashboard-new.html'">Go to Dashboard</button>
+                <button class="btn-primary-new" onclick="window.location.href='owner-cafes.html'">View My Cafés</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script type="module" src="scripts/owner-add-cafe.js"></script>
+</body>
+</html>

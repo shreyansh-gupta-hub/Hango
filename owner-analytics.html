@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - HANGO Owner</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="owner-layout">
+        <aside class="owner-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="owner-dashboard-new.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="owner-add-cafe.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Café</span>
+                </a>
+                <a href="owner-gallery.html" class="nav-item">
+                    <span class="nav-icon">🖼️</span>
+                    <span>Gallery</span>
+                </a>
+                <a href="owner-analytics.html" class="nav-item active">
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="owner-main">
+            <header class="dashboard-header">
+                <h1>Analytics</h1>
+                <select class="time-filter">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                    <option>Last 3 Months</option>
+                </select>
+            </header>
+
+            <div class="analytics-grid">
+                <div class="chart-card">
+                    <h3>Café Popularity</h3>
+                    <div class="chart-3d">
+                        <div class="bar-3d" style="height: 60%">
+                            <span class="bar-label">Mon</span>
+                        </div>
+                        <div class="bar-3d" style="height: 75%">
+                            <span class="bar-label">Tue</span>
+                        </div>
+                        <div class="bar-3d" style="height: 85%">
+                            <span class="bar-label">Wed</span>
+                        </div>
+                        <div class="bar-3d" style="height: 70%">
+                            <span class="bar-label">Thu</span>
+                        </div>
+                        <div class="bar-3d" style="height: 90%">
+                            <span class="bar-label">Fri</span>
+                        </div>
+                        <div class="bar-3d" style="height: 95%">
+                            <span class="bar-label">Sat</span>
+                        </div>
+                        <div class="bar-3d" style="height: 80%">
+                            <span class="bar-label">Sun</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-card">
+                    <h3>Top Performing Locations</h3>
+                    <div class="location-stats">
+                        <div class="location-stat-item">
+                            <span class="location-name">Downtown Branch</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 85%"></div>
+                            </div>
+                            <span class="location-value">1,847 views</span>
+                        </div>
+                        <div class="location-stat-item">
+                            <span class="location-name">Uptown Branch</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 65%"></div>
+                            </div>
+                            <span class="location-value">1,234 views</span>
+                        </div>
+                        <div class="location-stat-item">
+                            <span class="location-name">Riverside Branch</span>
+                            <div class="progress-bar">
+                                <div class="progress-fill" style="width: 45%"></div>
+                            </div>
+                            <span class="location-value">876 views</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="scripts/owner.js"></script>
+</body>
+</html>

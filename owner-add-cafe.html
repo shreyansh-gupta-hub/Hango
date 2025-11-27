@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Café - HANGO Owner</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="owner-layout">
+        <aside class="owner-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="owner-dashboard-new.html" class="nav-item">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="owner-add-cafe.html" class="nav-item active">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Café</span>
+                </a>
+                <a href="owner-gallery.html" class="nav-item">
+                    <span class="nav-icon">🖼️</span>
+                    <span>Gallery</span>
+                </a>
+                <a href="owner-analytics.html" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="owner-main">
+            <header class="dashboard-header">
+                <h1>Add New Café</h1>
+            </header>
+
+            <form class="cafe-form">
+                <div class="form-section">
+                    <h3>Basic Information</h3>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Café Name</label>
+                            <input type="text" placeholder="Enter café name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Category</label>
+                            <select required>
+                                <option>Coffee Shop</option>
+                                <option>Café & Bakery</option>
+                                <option>Specialty Coffee</option>
+                                <option>Roastery</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea rows="4" placeholder="Tell customers about your café..."></textarea>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Location</h3>
+                    <div class="form-group">
+                        <label>Address</label>
+                        <input type="text" placeholder="Street address" required>
+                    </div>
+                    <div class="map-picker-3d">
+                        <div class="map-picker-placeholder">
+                            <p>📍 Click to select location on map</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Images</h3>
+                    <div class="upload-zone">
+                        <div class="upload-icon">📸</div>
+                        <p>Drag & drop images or click to browse</p>
+                        <input type="file" multiple accept="image/*" hidden id="imageUpload">
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3>Menu Upload</h3>
+                    <div class="upload-zone menu-upload">
+                        <div class="upload-icon">📋</div>
+                        <p>Upload menu PDF or images</p>
+                        <input type="file" multiple accept="image/*,.pdf" hidden id="menuUpload">
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary">Save as Draft</button>
+                    <button type="submit" class="btn-primary">Publish Café</button>
+                </div>
+            </form>
+        </main>
+    </div>
+
+    <script src="scripts/owner.js"></script>
+</body>
+</html>

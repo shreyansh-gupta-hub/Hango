@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Test - HANGO</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #1A1A1A;
+            color: white;
+        }
+
+        #map {
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .test-info {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            border: 2px solid #D4AF37;
+        }
+
+        .test-info h2 {
+            color: #D4AF37;
+            margin-bottom: 10px;
+        }
+
+        .test-info p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            margin-left: 10px;
+        }
+
+        .status.success {
+            background: #28a745;
+            color: white;
+        }
+
+        .status.error {
+            background: #dc3545;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-info">
+        <h2>🗺️ Map Test Page</h2>
+        <p>Leaflet Status: <span id="leafletStatus" class="status">Loading...</span></p>
+        <p>Map Status: <span id="mapStatus" class="status">Loading...</span></p>
+        <p>Tiles Status: <span id="tilesStatus" class="status">Loading...</span></p>
+        <p><small>If you see a map with markers, everything works!</small></p>
+    </div>
+
+    <div id="map"></div>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script>
+        const leafletStatus = document.getElementById('leafletStatus');
+        const mapStatus = document.getElementById('mapStatus');
+        const tilesStatus = document.getElementById('tilesStatus');
+
+        // Check Leaflet
+        if (typeof L !== 'undefined') {
+            leafletStatus.textContent = '✓ Loaded';
+            leafletStatus.className = 'status success';
+            console.log('✓ Leaflet loaded');
+        } else {
+            leafletStatus.textContent = '✗ Failed';
+            leafletStatus.className = 'status error';
+            console.error('✗ Leaflet failed to load');
+        }
+
+        // Initialize map
+        try {
+            const map = L.map('map').setView([40.7580, -73.9855], 16);
+            mapStatus.textContent = '✓ Initialized';
+            mapStatus.className = 'status success';
+            console.log('✓ Map initialized');
+
+            // Add tiles
+            const tileLayer = L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+                attribution: '© OpenStreetMap contributors © CARTO',
+                maxZoom: 19
+            }).addTo(map);
+
+            tileLayer.on('load', () => {
+                tilesStatus.textContent = '✓ Loaded';
+                tilesStatus.className = 'status success';
+                console.log('✓ Tiles loaded');
+            });
+
+            tileLayer.on('tileerror', (error) => {
+                tilesStatus.textContent = '✗ Error';
+                tilesStatus.className = 'status error';
+                console.error('✗ Tile error:', error);
+            });
+
+            // Add test markers
+            const locations = [
+                { lat: 40.7580, lng: -73.9855, name: 'Times Square' },
+                { lat: 40.7614, lng: -73.9776, name: 'Central Park' },
+                { lat: 40.7489, lng: -73.9680, name: 'East Side' }
+            ];
+
+            locations.forEach(loc => {
+                L.marker([loc.lat, loc.lng])
+                    .addTo(map)
+                    .bindPopup(`<b>${loc.name}</b><br>Test Marker`);
+            });
+
+            console.log('✓ Added', locations.length, 'markers');
+
+            // Force refresh
+            setTimeout(() => {
+                map.invalidateSize();
+            }, 100);
+
+        } catch (error) {
+            mapStatus.textContent = '✗ Error';
+            mapStatus.className = 'status error';
+            console.error('✗ Map error:', error);
+        }
+    </script>
+</body>
+</html>

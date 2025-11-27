@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Your Perfect Café - HANGO</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles/recommendations.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon"><i class="fas fa-mug-hot"></i></span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="map.html">Explore</a></li>
+                <li><a href="user-recommendations.html" class="active">Match</a></li>
+                <li><a href="social-tables.html">Social</a></li>
+                <li><a href="user-profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="recommendations-page">
+        <!-- Hero Section -->
+        <section class="hero-section">
+            <div class="hero-content">
+                <h1 class="hero-title">Find Your Perfect Café</h1>
+                <p class="hero-subtitle">Tell us what you're looking for, and we'll match you with the ideal spot</p>
+            </div>
+        </section>
+
+        <!-- Recommendation Form -->
+        <section class="form-section" id="formSection">
+            <div class="form-container">
+                <form id="recommendationForm" class="recommendation-form">
+                    <!-- People Count -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-users"></i>
+                            <span>Number of People</span>
+                        </label>
+                        <div class="counter-input">
+                            <button type="button" class="counter-btn" onclick="adjustCount('people', -1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" id="people" value="2" min="1" max="20" readonly>
+                            <button type="button" class="counter-btn" onclick="adjustCount('people', 1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Budget -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-wallet"></i>
+                            <span>Budget per Person</span>
+                        </label>
+                        <div class="budget-input">
+                            <div class="budget-display">
+                                <span class="currency">₹</span>
+                                <input type="number" id="budgetValue" value="500" min="100" max="5000" step="50">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Occasion -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-calendar-star"></i>
+                            <span>Occasion / Description</span>
+                        </label>
+                        <textarea id="occasion" placeholder="E.g., Birthday celebration, Business meeting, Casual hangout..." rows="3"></textarea>
+                    </div>
+
+                    <!-- Location Toggle -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-location-dot"></i>
+                            <span>Use My Location</span>
+                        </label>
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="useLocation" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+
+                    <!-- Dietary Preferences -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-leaf"></i>
+                            <span>Dietary Preferences</span>
+                        </label>
+                        <div class="chip-group">
+                            <label class="chip">
+                                <input type="checkbox" name="dietary" value="vegetarian">
+                                <span>Vegetarian</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="dietary" value="vegan">
+                                <span>Vegan</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="dietary" value="jain">
+                                <span>Jain</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="dietary" value="halal">
+                                <span>Halal</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Food Type -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-utensils"></i>
+                            <span>What are you craving?</span>
+                        </label>
+                        <div class="chip-group">
+                            <label class="chip">
+                                <input type="checkbox" name="foodType" value="coffee">
+                                <span>☕ Coffee</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="foodType" value="snacks">
+                                <span>🍿 Snacks</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="foodType" value="meals">
+                                <span>🍽️ Meals</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="foodType" value="desserts">
+                                <span>🍰 Desserts</span>
+                            </label>
+                            <label class="chip">
+                                <input type="checkbox" name="foodType" value="beverages">
+                                <span>🥤 Beverages</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="submit-btn">
+                        <span class="btn-text">Find My Perfect Café</span>
+                        <span class="btn-icon"><i class="fas fa-sparkles"></i></span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-container">
+                <div class="results-header">
+                    <h2>Your Perfect Matches</h2>
+                    <button class="btn-secondary" onclick="showForm()">
+                        <i class="fas fa-arrow-left"></i> Modify Preferences
+                    </button>
+                </div>
+
+                <!-- Loading State -->
+                <div class="loading-state" id="loadingState">
+                    <div class="coffee-loader">
+                        <div class="coffee-cup">☕</div>
+                        <div class="steam"></div>
+                    </div>
+                    <p>Finding your perfect match...</p>
+                </div>
+
+                <!-- Results Grid -->
+                <div class="results-grid" id="resultsGrid"></div>
+
+                <!-- Top Dishes Section -->
+                <div class="top-dishes-section" id="topDishesSection" style="display: none;">
+                    <h3>AI-Generated Custom Meal Combos</h3>
+                    <p style="color: var(--text-secondary); margin-bottom: 1rem;">Personalized meal combinations crafted for your budget and preferences</p>
+                    <div class="dishes-carousel" id="dishesCarousel"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="scripts/recommendations.js"></script>
+</body>
+</html>

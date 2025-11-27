@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Cafés - Simple Method</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #1a2332;
+            color: white;
+        }
+        button {
+            padding: 15px 30px;
+            font-size: 16px;
+            background: #00d4ff;
+            color: #1a2332;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        button:hover {
+            background: #4dd4ff;
+        }
+        #output {
+            background: #2d3e50;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success { color: #4ade80; }
+        .error { color: #ff6b6b; }
+        .info { color: #00d4ff; }
+    </style>
+</head>
+<body>
+    <h1>🗄️ Add Example Cafés</h1>
+    <p>This will add 8 example cafés to your Firestore database.</p>
+    
+    <button onclick="addCafes()">Add Cafés to Database</button>
+    <button onclick="clearOutput()">Clear Log</button>
+    
+    <div id="output">Ready to add cafés...</div>
+
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, doc, setDoc } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyCR6fyqMDC-cBuARdXhD8KYn7Y3jqiXCVM",
+            authDomain: "cafehunt-e84a7.firebaseapp.com",
+            projectId: "cafehunt-e84a7",
+            storageBucket: "cafehunt-e84a7.firebasestorage.app",
+            messagingSenderId: "642019761362",
+            appId: "1:642019761362:web:5b757e79afb4409f9f610b",
+            measurementId: "G-S76DE68B7K"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const output = document.getElementById('output');
+
+        function log(message, type = 'info') {
+            const line = document.createElement('div');
+            line.className = type;
+            line.textContent = message;
+            output.appendChild(line);
+            output.scrollTop = output.scrollHeight;
+        }
+
+        window.clearOutput = function() {
+            output.innerHTML = 'Ready to add cafés...';
+        };
+
+        window.addCafes = async function() {
+            output.innerHTML = '';
+            log('🚀 Starting to add cafés...', 'info');
+            
+            const cafes = [
+                {
+                    name: 'Blue Bottle Coffee',
+                    description: 'Artisanal coffee roasted to perfection with a minimalist aesthetic.',
+                    address: '450 W 15th St, New York, NY 10011',
+                    location: { lat: 40.7420, lng: -74.0064 },
+                    rating: '4.8',
+                    reviews: '342',
+                    images: ['https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800'],
+                    tags: ['WiFi', 'Outdoor Seating', 'Specialty Coffee'],
+                    featured: true
+                },
+                {
+                    name: 'Stumptown Coffee Roasters',
+                    description: 'Portland-based roaster known for direct trade beans.',
+                    address: '18 W 29th St, New York, NY 10001',
+                    location: { lat: 40.7456, lng: -73.9889 },
+                    rating: '4.7',
+                    reviews: '289',
+                    images: ['https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=800'],
+                    tags: ['WiFi', 'Cold Brew', 'Espresso Bar'],
+                    featured: true
+                },
+                {
+                    name: 'Intelligentsia Coffee',
+                    description: 'Third-wave coffee pioneer with single-origin beans.',
+                    address: '180 Orchard St, New York, NY 10002',
+                    location: { lat: 40.7214, lng: -73.9877 },
+                    rating: '4.9',
+                    reviews: '456',
+                    images: ['https://images.unsplash.com/photo-1559305616-3b04e37e3b60?w=800'],
+                    tags: ['WiFi', 'Specialty Coffee', 'Pour Over'],
+                    featured: true
+                },
+                {
+                    name: 'La Colombe Coffee',
+                    description: 'Innovative coffee company famous for their draft latte.',
+                    address: '270 Lafayette St, New York, NY 10012',
+                    location: { lat: 40.7242, lng: -73.9960 },
+                    rating: '4.6',
+                    reviews: '198',
+                    images: ['https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=800'],
+                    tags: ['Draft Latte', 'Brunch', 'Instagram-worthy'],
+                    featured: false
+                },
+                {
+                    name: 'Birch Coffee',
+                    description: 'Neighborhood coffee shop with warm atmosphere.',
+                    address: '134 1/2 W 17th St, New York, NY 10011',
+                    location: { lat: 40.7403, lng: -73.9971 },
+                    rating: '4.5',
+                    reviews: '167',
+                    images: ['https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=800'],
+                    tags: ['WiFi', 'Cozy', 'Sustainable'],
+                    featured: false
+                },
+                {
+                    name: 'Devoción',
+                    description: 'Colombian coffee roastery with stunning indoor garden.',
+                    address: '69 Grand St, Brooklyn, NY 11249',
+                    location: { lat: 40.7133, lng: -73.9573 },
+                    rating: '4.8',
+                    reviews: '523',
+                    images: ['https://images.unsplash.com/photo-1511920170033-f8396924c348?w=800'],
+                    tags: ['Roastery', 'Indoor Garden', 'Colombian Coffee'],
+                    featured: true
+                },
+                {
+                    name: 'Café Grumpy',
+                    description: 'Brooklyn-born coffee shop with quality espresso.',
+                    address: '224 W 20th St, New York, NY 10011',
+                    location: { lat: 40.7436, lng: -73.9989 },
+                    rating: '4.4',
+                    reviews: '234',
+                    images: ['https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=800'],
+                    tags: ['Espresso', 'Local Favorite', 'WiFi'],
+                    featured: false
+                },
+                {
+                    name: 'Think Coffee',
+                    description: 'Fair trade coffee shop with mission-driven approach.',
+                    address: '248 Mercer St, New York, NY 10012',
+                    location: { lat: 40.7282, lng: -73.9956 },
+                    rating: '4.3',
+                    reviews: '189',
+                    images: ['https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=800'],
+                    tags: ['Fair Trade', 'Student Friendly', 'WiFi'],
+                    featured: false
+                }
+            ];
+
+            let successCount = 0;
+            let errorCount = 0;
+
+            for (let i = 0; i < cafes.length; i++) {
+                const cafe = cafes[i];
+                const cafeId = `cafe-${String(i + 1).padStart(3, '0')}`;
+                
+                try {
+                    await setDoc(doc(db, 'cafes', cafeId), {
+                        ...cafe,
+                        createdAt: new Date().toISOString(),
+                        updatedAt: new Date().toISOString()
+                    });
+                    
+                    log(`✅ Added: ${cafe.name}`, 'success');
+                    successCount++;
+                    
+                    // Small delay to avoid rate limiting
+                    await new Promise(resolve => setTimeout(resolve, 100));
+                } catch (error) {
+                    log(`❌ Error adding ${cafe.name}: ${error.message}`, 'error');
+                    errorCount++;
+                }
+            }
+
+            log('', 'info');
+            log('═══════════════════════════════', 'info');
+            log(`✅ Successfully added: ${successCount} cafés`, 'success');
+            if (errorCount > 0) {
+                log(`❌ Failed: ${errorCount} cafés`, 'error');
+            }
+            log('═══════════════════════════════', 'info');
+            log('', 'info');
+            log('🎉 Done! Refresh your home page to see the cafés.', 'success');
+        };
+
+        log('✓ Firebase initialized', 'success');
+        log('✓ Ready to add cafés', 'info');
+        log('', 'info');
+        log('Click "Add Cafés to Database" button above', 'info');
+    </script>
+</body>
+</html>

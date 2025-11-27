@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - HANGO Owner</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Owner Sidebar -->
+    <div class="owner-layout">
+        <aside class="owner-sidebar">
+            <div class="sidebar-logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="owner-dashboard-new.html" class="nav-item active">
+                    <span class="nav-icon">📊</span>
+                    <span>Dashboard</span>
+                </a>
+                <a href="owner-add-cafe.html" class="nav-item">
+                    <span class="nav-icon">➕</span>
+                    <span>Add Café</span>
+                </a>
+                <a href="owner-gallery.html" class="nav-item">
+                    <span class="nav-icon">🖼️</span>
+                    <span>Gallery</span>
+                </a>
+                <a href="owner-analytics.html" class="nav-item">
+                    <span class="nav-icon">📈</span>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+        </aside>
+
+        <main class="owner-main">
+            <header class="dashboard-header">
+                <h1>Welcome back, Artisan Brew House</h1>
+                <button class="btn-primary glow-btn" onclick="window.location.href='owner-add-cafe.html'">
+                    <span>➕</span> Add New Café
+                </button>
+            </header>
+
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card-3d">
+                    <div class="stat-icon">👁️</div>
+                    <div class="stat-content">
+                        <h3>2,847</h3>
+                        <p>Total Views</p>
+                    </div>
+                    <div class="stat-trend up">+12%</div>
+                </div>
+
+                <div class="stat-card-3d">
+                    <div class="stat-icon">❤️</div>
+                    <div class="stat-content">
+                        <h3>1,234</h3>
+                        <p>Saves</p>
+                    </div>
+                    <div class="stat-trend up">+8%</div>
+                </div>
+
+                <div class="stat-card-3d">
+                    <div class="stat-icon">⭐</div>
+                    <div class="stat-content">
+                        <h3>4.8</h3>
+                        <p>Average Rating</p>
+                    </div>
+                    <div class="stat-trend">234 reviews</div>
+                </div>
+
+                <div class="stat-card-3d">
+                    <div class="stat-icon">📍</div>
+                    <div class="stat-content">
+                        <h3>3</h3>
+                        <p>Active Locations</p>
+                    </div>
+                    <div class="stat-trend">All verified</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <section class="dashboard-section">
+                <h2>Recent Activity</h2>
+                <div class="activity-list">
+                    <div class="activity-item">
+                        <div class="activity-icon">⭐</div>
+                        <div class="activity-content">
+                            <p><strong>New Review</strong> from Sarah M.</p>
+                            <span class="activity-time">2 hours ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">❤️</div>
+                        <div class="activity-content">
+                            <p><strong>15 new saves</strong> this week</p>
+                            <span class="activity-time">1 day ago</span>
+                        </div>
+                    </div>
+                    <div class="activity-item">
+                        <div class="activity-icon">📸</div>
+                        <div class="activity-content">
+                            <p><strong>Gallery updated</strong> with 5 new photos</p>
+                            <span class="activity-time">3 days ago</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="scripts/owner.js"></script>
+</body>
+</html>

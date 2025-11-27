@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings - HANGO Owner Portal</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/owner-portal.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body class="owner-portal">
+    <div class="coffee-grain-bg"></div>
+
+    <!-- Sidebar -->
+    <aside class="owner-sidebar-new">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <span class="owner-badge">Owner Portal</span>
+        </div>
+        
+        <nav class="sidebar-nav-new">
+            <a href="owner-dashboard-new.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="owner-cafes.html" class="nav-item">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">My Cafés</span>
+            </a>
+            <a href="owner-add-cafe-new.html" class="nav-item">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Add Café</span>
+            </a>
+            <a href="owner-analytics-new.html" class="nav-item">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Analytics</span>
+            </a>
+            <a href="owner-gallery-new.html" class="nav-item">
+                <span class="nav-icon">🖼️</span>
+                <span class="nav-text">Gallery</span>
+            </a>
+            <a href="owner-settings.html" class="nav-item active">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+                <span class="nav-indicator"></span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="owner-profile-mini">
+                <div class="profile-avatar-mini">JD</div>
+                <div class="profile-info-mini">
+                    <span class="profile-name-mini">John's Café</span>
+                    <span class="profile-status">Verified</span>
+                </div>
+            </div>
+            <button class="logout-btn-mini">
+                <span>🚪</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="owner-main-new">
+        <header class="dashboard-header-new">
+            <div class="header-left">
+                <h1 class="page-title">Settings</h1>
+                <p class="page-subtitle">Manage your account and preferences</p>
+            </div>
+        </header>
+
+        <!-- Settings Sections -->
+        <div class="settings-container">
+            <!-- Profile Section -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <h2 class="settings-section-title">Owner Profile</h2>
+                    <span class="verified-badge">✓ Verified</span>
+                </div>
+                
+                <div class="settings-content">
+                    <div class="profile-photo-section">
+                        <div class="profile-photo-large">
+                            <span>JD</span>
+                        </div>
+                        <div class="profile-photo-actions">
+                            <button class="btn-secondary-new">
+                                <span>📸</span>
+                                <span>Change Photo</span>
+                            </button>
+                            <button class="btn-text">Remove</button>
+                        </div>
+                    </div>
+                    
+                    <div class="settings-form">
+                        <div class="form-grid">
+                            <div class="form-group-new">
+                                <label class="form-label">Business Name</label>
+                                <input type="text" class="form-input" value="John's Café" placeholder="Business name">
+                            </div>
+                            
+                            <div class="form-group-new">
+                                <label class="form-label">Owner Name</label>
+                                <input type="text" class="form-input" value="John Doe" placeholder="Your name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-grid">
+                            <div class="form-group-new">
+                                <label class="form-label">Email</label>
+                                <input type="email" class="form-input" value="john@example.com" placeholder="Email address">
+                            </div>
+                            
+                            <div class="form-group-new">
+                                <label class="form-label">Phone</label>
+                                <input type="tel" class="form-input" value="+1 (555) 123-4567" placeholder="Phone number">
+                            </div>
+                        </div>
+                        
+                        <div class="form-actions-inline">
+                            <button class="btn-primary-new">
+                                <span>💾</span>
+                                <span>Save Changes</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notification Preferences -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <h2 class="settings-section-title">Notification Preferences</h2>
+                </div>
+                
+                <div class="settings-content">
+                    <div class="notification-options">
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>New Reviews</h4>
+                                <p>Get notified when users leave reviews</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>Bookmark Milestones</h4>
+                                <p>Celebrate when you reach bookmark goals</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>Weekly Analytics</h4>
+                                <p>Receive weekly performance summaries</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox" checked>
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                        
+                        <div class="notification-item">
+                            <div class="notification-info">
+                                <h4>Marketing Tips</h4>
+                                <p>Get tips to improve your café's visibility</p>
+                            </div>
+                            <label class="toggle-switch">
+                                <input type="checkbox">
+                                <span class="toggle-slider"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Theme Settings -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <h2 class="settings-section-title">Appearance</h2>
+                </div>
+                
+                <div class="settings-content">
+                    <div class="theme-options">
+                        <div class="theme-card active">
+                            <div class="theme-preview dark">
+                                <div class="theme-preview-header"></div>
+                                <div class="theme-preview-content"></div>
+                            </div>
+                            <div class="theme-info">
+                                <h4>Dark Mode</h4>
+                                <span class="theme-badge">Active</span>
+                            </div>
+                        </div>
+                        
+                        <div class="theme-card">
+                            <div class="theme-preview light">
+                                <div class="theme-preview-header"></div>
+                                <div class="theme-preview-content"></div>
+                            </div>
+                            <div class="theme-info">
+                                <h4>Light Mode</h4>
+                                <span class="theme-badge">Coming Soon</span>
+                            </div>
+                        </div>
+                        
+                        <div class="theme-card">
+                            <div class="theme-preview auto">
+                                <div class="theme-preview-header"></div>
+                                <div class="theme-preview-content"></div>
+                            </div>
+                            <div class="theme-info">
+                                <h4>Auto</h4>
+                                <span class="theme-badge">Coming Soon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Account Settings -->
+            <div class="settings-section">
+                <div class="settings-section-header">
+                    <h2 class="settings-section-title">Account</h2>
+                </div>
+                
+                <div class="settings-content">
+                    <div class="account-actions">
+                        <div class="account-action-item">
+                            <div class="account-action-info">
+                                <h4>Change Password</h4>
+                                <p>Update your password regularly for security</p>
+                            </div>
+                            <button class="btn-secondary-new">
+                                <span>🔒</span>
+                                <span>Change</span>
+                            </button>
+                        </div>
+                        
+                        <div class="account-action-item">
+                            <div class="account-action-info">
+                                <h4>Two-Factor Authentication</h4>
+                                <p>Add an extra layer of security</p>
+                            </div>
+                            <button class="btn-secondary-new">
+                                <span>🔐</span>
+                                <span>Enable</span>
+                            </button>
+                        </div>
+                        
+                        <div class="account-action-item danger">
+                            <div class="account-action-info">
+                                <h4>Delete Account</h4>
+                                <p>Permanently delete your account and all data</p>
+                            </div>
+                            <button class="btn-danger">
+                                <span>⚠️</span>
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="scripts/owner-settings.js"></script>
+</body>
+</html>

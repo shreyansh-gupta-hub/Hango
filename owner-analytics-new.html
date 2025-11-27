@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - HANGO Owner Portal</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/owner-portal.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="owner-portal">
+    <div class="coffee-grain-bg"></div>
+
+    <!-- Sidebar -->
+    <aside class="owner-sidebar-new">
+        <div class="sidebar-header">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <span class="owner-badge">Owner Portal</span>
+        </div>
+        
+        <nav class="sidebar-nav-new">
+            <a href="owner-dashboard-new.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
+            <a href="owner-cafes.html" class="nav-item">
+                <span class="nav-icon">🏪</span>
+                <span class="nav-text">My Cafés</span>
+            </a>
+            <a href="owner-add-cafe-new.html" class="nav-item">
+                <span class="nav-icon">➕</span>
+                <span class="nav-text">Add Café</span>
+            </a>
+            <a href="owner-analytics-new.html" class="nav-item active">
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Analytics</span>
+                <span class="nav-indicator"></span>
+            </a>
+            <a href="owner-gallery-new.html" class="nav-item">
+                <span class="nav-icon">🖼️</span>
+                <span class="nav-text">Gallery</span>
+            </a>
+            <a href="owner-settings.html" class="nav-item">
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Settings</span>
+            </a>
+        </nav>
+
+        <div class="sidebar-footer">
+            <div class="owner-profile-mini">
+                <div class="profile-avatar-mini">JD</div>
+                <div class="profile-info-mini">
+                    <span class="profile-name-mini">John's Café</span>
+                    <span class="profile-status">Verified</span>
+                </div>
+            </div>
+            <button class="logout-btn-mini">
+                <span>🚪</span>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="owner-main-new">
+        <header class="dashboard-header-new">
+            <div class="header-left">
+                <h1 class="page-title">Analytics</h1>
+                <p class="page-subtitle">Real-time user interaction data</p>
+            </div>
+            <div class="header-right">
+                <select class="time-filter-new">
+                    <option>Last 7 Days</option>
+                    <option>Last 30 Days</option>
+                    <option>Last 3 Months</option>
+                    <option>Last Year</option>
+                </select>
+                <div class="sync-indicator">
+                    <div class="sync-pulse"></div>
+                    <span class="sync-text">Live Data</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sync Banner -->
+        <div class="sync-banner">
+            <div class="sync-banner-icon">📊</div>
+            <div class="sync-banner-content">
+                <h3>Real-Time User Statistics</h3>
+                <p>All data reflects actual user interactions on the user portal</p>
+            </div>
+        </div>
+
+        <!-- Overview Cards -->
+        <div class="analytics-overview-grid">
+            <div class="analytics-card">
+                <div class="analytics-card-header">
+                    <span class="analytics-icon">👁️</span>
+                    <span class="trend-badge up">↑ 12%</span>
+                </div>
+                <h3 class="analytics-number">5,234</h3>
+                <p class="analytics-label">Total Views</p>
+                <div class="analytics-sparkline">
+                    <canvas id="viewsSparkline"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-card-header">
+                    <span class="analytics-icon">❤️</span>
+                    <span class="trend-badge up">↑ 8%</span>
+                </div>
+                <h3 class="analytics-number">1,847</h3>
+                <p class="analytics-label">Bookmarks</p>
+                <div class="analytics-sparkline">
+                    <canvas id="bookmarksSparkline"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-card-header">
+                    <span class="analytics-icon">🔗</span>
+                    <span class="trend-badge up">↑ 15%</span>
+                </div>
+                <h3 class="analytics-number">892</h3>
+                <p class="analytics-label">Click-throughs</p>
+                <div class="analytics-sparkline">
+                    <canvas id="clicksSparkline"></canvas>
+                </div>
+            </div>
+
+            <div class="analytics-card">
+                <div class="analytics-card-header">
+                    <span class="analytics-icon">⭐</span>
+                    <span class="trend-badge">—</span>
+                </div>
+                <h3 class="analytics-number">4.7</h3>
+                <p class="analytics-label">Avg. Rating</p>
+                <div class="rating-stars">
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star filled">★</span>
+                    <span class="star half">★</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="charts-grid">
+            <!-- User Visits Chart -->
+            <div class="chart-container-new">
+                <div class="chart-header">
+                    <h2 class="chart-title">User Visits</h2>
+                    <div class="chart-legend">
+                        <span class="legend-item">
+                            <span class="legend-dot views"></span>
+                            <span>Views</span>
+                        </span>
+                        <span class="legend-item">
+                            <span class="legend-dot unique"></span>
+                            <span>Unique Visitors</span>
+                        </span>
+                    </div>
+                </div>
+                <canvas id="visitsChart"></canvas>
+            </div>
+
+            <!-- Bookmark Trends Chart -->
+            <div class="chart-container-new">
+                <div class="chart-header">
+                    <h2 class="chart-title">Bookmark Trends</h2>
+                </div>
+                <canvas id="bookmarkChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Peak Hours -->
+        <div class="peak-hours-section">
+            <h2 class="section-title">Peak Hours</h2>
+            <p class="section-subtitle">When users are most active</p>
+            
+            <div class="peak-hours-grid">
+                <div class="hour-bar" style="--height: 45%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">12AM</span>
+                </div>
+                <div class="hour-bar" style="--height: 30%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">3AM</span>
+                </div>
+                <div class="hour-bar" style="--height: 50%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">6AM</span>
+                </div>
+                <div class="hour-bar" style="--height: 85%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">9AM</span>
+                </div>
+                <div class="hour-bar" style="--height: 95%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">12PM</span>
+                </div>
+                <div class="hour-bar" style="--height: 75%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">3PM</span>
+                </div>
+                <div class="hour-bar" style="--height: 90%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">6PM</span>
+                </div>
+                <div class="hour-bar" style="--height: 60%">
+                    <div class="hour-fill"></div>
+                    <span class="hour-label">9PM</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Performing Cafés -->
+        <div class="top-cafes-section">
+            <h2 class="section-title">Top Performing Cafés</h2>
+            <div class="top-cafes-list">
+                <div class="top-cafe-item">
+                    <div class="rank-badge gold">1</div>
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=100" alt="Café">
+                    <div class="top-cafe-info">
+                        <h4>Artisan Brew House</h4>
+                        <p>Downtown</p>
+                    </div>
+                    <div class="top-cafe-stats">
+                        <div class="top-stat">
+                            <span class="top-stat-value">2,847</span>
+                            <span class="top-stat-label">Views</span>
+                        </div>
+                        <div class="top-stat">
+                            <span class="top-stat-value">456</span>
+                            <span class="top-stat-label">Saves</span>
+                        </div>
+                    </div>
+                    <div class="performance-bar">
+                        <div class="performance-fill" style="width: 95%"></div>
+                    </div>
+                </div>
+
+                <div class="top-cafe-item">
+                    <div class="rank-badge silver">2</div>
+                    <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=100" alt="Café">
+                    <div class="top-cafe-info">
+                        <h4>Cozy Corner Café</h4>
+                        <p>Uptown</p>
+                    </div>
+                    <div class="top-cafe-stats">
+                        <div class="top-stat">
+                            <span class="top-stat-value">1,934</span>
+                            <span class="top-stat-label">Views</span>
+                        </div>
+                        <div class="top-stat">
+                            <span class="top-stat-value">312</span>
+                            <span class="top-stat-label">Saves</span>
+                        </div>
+                    </div>
+                    <div class="performance-bar">
+                        <div class="performance-fill" style="width: 75%"></div>
+                    </div>
+                </div>
+
+                <div class="top-cafe-item">
+                    <div class="rank-badge bronze">3</div>
+                    <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=100" alt="Café">
+                    <div class="top-cafe-info">
+                        <h4>Riverside Roastery</h4>
+                        <p>Riverside</p>
+                    </div>
+                    <div class="top-cafe-stats">
+                        <div class="top-stat">
+                            <span class="top-stat-value">1,453</span>
+                            <span class="top-stat-label">Views</span>
+                        </div>
+                        <div class="top-stat">
+                            <span class="top-stat-value">234</span>
+                            <span class="top-stat-label">Saves</span>
+                        </div>
+                    </div>
+                    <div class="performance-bar">
+                        <div class="performance-fill" style="width: 60%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="scripts/owner-analytics.js"></script>
+</body>
+</html>

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Showcase - HANGO</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .showcase-section {
+            padding: 4rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .showcase-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            color: var(--gold);
+        }
+        .color-palette {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1.5rem;
+        }
+        .color-swatch {
+            height: 120px;
+            border-radius: 15px;
+            display: flex;
+            align-items: flex-end;
+            padding: 1rem;
+            font-weight: 600;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .typography-sample {
+            margin-bottom: 2rem;
+        }
+        .animation-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .demo-box {
+            height: 150px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon">☕</span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="getting-started.html">Guide</a></li>
+                <li><a href="design-showcase.html" class="active">Showcase</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 120px; padding-bottom: 4rem;">
+        <h1 class="text-center" style="font-size: 3rem; margin-bottom: 1rem;">Design Showcase</h1>
+        <p class="text-center" style="color: var(--beige); margin-bottom: 4rem;">Explore the design system and components</p>
+
+        <!-- Color Palette -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">🎨 Color Palette</h2>
+            <div class="color-palette">
+                <div class="color-swatch" style="background: #6F4E37;">
+                    <span>Mocha<br>#6F4E37</span>
+                </div>
+                <div class="color-swatch" style="background: #4A3426;">
+                    <span>Dark Mocha<br>#4A3426</span>
+                </div>
+                <div class="color-swatch" style="background: #F5E6D3; color: #1A1A1A;">
+                    <span>Cream<br>#F5E6D3</span>
+                </div>
+                <div class="color-swatch" style="background: #E8D5C4; color: #1A1A1A;">
+                    <span>Beige<br>#E8D5C4</span>
+                </div>
+                <div class="color-swatch" style="background: #D4AF37; color: #1A1A1A;">
+                    <span>Gold<br>#D4AF37</span>
+                </div>
+                <div class="color-swatch" style="background: #C68B59; color: #1A1A1A;">
+                    <span>Caramel<br>#C68B59</span>
+                </div>
+                <div class="color-swatch" style="background: #1A1A1A;">
+                    <span>Matte Black<br>#1A1A1A</span>
+                </div>
+                <div class="color-swatch" style="background: #FAFAFA; color: #1A1A1A;">
+                    <span>Soft White<br>#FAFAFA</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Typography -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">✍️ Typography</h2>
+            <div class="typography-sample">
+                <h1 style="font-size: 4rem; margin-bottom: 1rem;">Hero Title - 4rem</h1>
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem;">Heading 1 - 3.5rem</h1>
+                <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Heading 2 - 2.5rem</h2>
+                <h3 style="font-size: 1.8rem; margin-bottom: 1rem;">Heading 3 - 1.8rem</h3>
+                <p style="font-size: 1.2rem; margin-bottom: 1rem;">Large Body Text - 1.2rem</p>
+                <p style="font-size: 1rem; margin-bottom: 1rem;">Regular Body Text - 1rem (Inter)</p>
+                <p style="font-size: 0.9rem; color: var(--beige);">Small Text - 0.9rem</p>
+            </div>
+        </section>
+
+        <!-- Buttons -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">🔘 Buttons</h2>
+            <div class="button-grid">
+                <button class="btn-primary">Primary Button</button>
+                <button class="btn-secondary">Secondary Button</button>
+                <button class="btn-primary glow-btn">Glow Button</button>
+                <button class="btn-primary" style="border-radius: 50px;">Rounded Button</button>
+            </div>
+        </section>
+
+        <!-- Cards -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">🃏 Card Styles</h2>
+            <div class="picks-grid">
+                <div class="cafe-card-3d">
+                    <div class="card-image">
+                        <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=400" alt="Café">
+                        <div class="card-badge">Featured</div>
+                    </div>
+                    <div class="card-content">
+                        <h3>3D Café Card</h3>
+                        <div class="card-meta">
+                            <span class="rating">⭐ 4.8</span>
+                            <span class="distance">0.5 km</span>
+                        </div>
+                        <p class="card-description">Hover for 3D effect</p>
+                    </div>
+                </div>
+
+                <div class="info-section">
+                    <h3>Glassmorphic Card</h3>
+                    <p>This card uses backdrop-filter blur for a frosted glass effect with subtle transparency.</p>
+                </div>
+
+                <div class="stat-card-3d">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3>2,847</h3>
+                        <p>Stat Card</p>
+                    </div>
+                    <div class="stat-trend up">+12%</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Animations -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">✨ Animations</h2>
+            <div class="animation-demo">
+                <div class="demo-box fade-in">Fade In</div>
+                <div class="demo-box slide-up">Slide Up</div>
+                <div class="demo-box hover-lift">Hover Lift</div>
+                <div class="demo-box hover-glow">Hover Glow</div>
+                <div class="demo-box hover-scale">Hover Scale</div>
+                <div class="demo-box card-tilt">Card Tilt</div>
+            </div>
+        </section>
+
+        <!-- Form Elements -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">📝 Form Elements</h2>
+            <div style="max-width: 600px;">
+                <div class="form-group">
+                    <label>Text Input</label>
+                    <input type="text" placeholder="Enter text...">
+                </div>
+                <div class="form-group">
+                    <label>Select Dropdown</label>
+                    <select>
+                        <option>Option 1</option>
+                        <option>Option 2</option>
+                        <option>Option 3</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Textarea</label>
+                    <textarea rows="4" placeholder="Enter description..."></textarea>
+                </div>
+                <div class="search-box">
+                    <input type="text" placeholder="Search..." class="search-input">
+                    <button class="location-btn">
+                        <span class="location-icon">📍</span>
+                    </button>
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Icons & Badges -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">🏷️ Badges & Tags</h2>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                <span class="card-badge">Premium</span>
+                <span class="card-badge" style="background: linear-gradient(135deg, #4CAF50, #45a049);">New</span>
+                <span class="card-badge" style="background: linear-gradient(135deg, #f44336, #da190b);">Hot</span>
+                <span class="tag">WiFi</span>
+                <span class="tag">Pet Friendly</span>
+                <span class="tag">Outdoor Seating</span>
+                <span class="quick-status open">Open Now</span>
+            </div>
+        </section>
+
+        <!-- 3D Elements -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">🎭 3D Elements</h2>
+            <div style="display: flex; gap: 3rem; flex-wrap: wrap; align-items: center; justify-content: center;">
+                <div class="floating-coffee">
+                    <div class="coffee-cup">
+                        <div class="cup-body"></div>
+                        <div class="cup-handle"></div>
+                        <div class="steam steam-1"></div>
+                        <div class="steam steam-2"></div>
+                        <div class="steam steam-3"></div>
+                    </div>
+                </div>
+                
+                <div class="map-pin" style="position: relative;">
+                    <div class="pin-icon">📍</div>
+                    <div class="pin-pulse"></div>
+                </div>
+
+                <div class="loading-spinner"></div>
+            </div>
+        </section>
+
+        <!-- Glassmorphism Examples -->
+        <section class="showcase-section">
+            <h2 class="showcase-title">💎 Glassmorphism</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                <div style="background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem;">
+                    <h3>Light Glass</h3>
+                    <p>5% white opacity with 20px blur</p>
+                </div>
+                <div style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 20px; padding: 2rem;">
+                    <h3>Medium Glass</h3>
+                    <p>10% white opacity with 30px blur</p>
+                </div>
+                <div style="background: rgba(26, 26, 26, 0.8); backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 2rem;">
+                    <h3>Dark Glass</h3>
+                    <p>80% black opacity with 30px blur</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Call to Action -->
+        <section class="showcase-section" style="text-align: center; border: none;">
+            <h2 class="showcase-title">🚀 Ready to Explore?</h2>
+            <p style="color: var(--beige); margin-bottom: 2rem;">See these components in action across the platform</p>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+                <a href="index.html" class="btn-primary">View Homepage</a>
+                <a href="getting-started.html" class="btn-secondary">Read Guide</a>
+            </div>
+        </section>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon">☕</span>
+                    <span class="logo-text">HANGO</span>
+                </div>
+                <p class="footer-tagline">Discover the art of coffee, one café at a time</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/main.js"></script>
+</body>
+</html>

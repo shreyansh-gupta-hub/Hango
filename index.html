@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HANGO - Discover Premium Coffee Experiences</title>
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/home-blue.css">
+    <link rel="stylesheet" href="styles/animations.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader-wrapper">
+        <div class="loader-content">
+            <div class="coffee-loader">
+                <div class="coffee-cup-loader">
+                    <div class="cup"></div>
+                    <div class="handle"></div>
+                    <div class="steam-loader"></div>
+                </div>
+            </div>
+            <h2 class="loader-text">HANGO</h2>
+            <p class="loader-subtext">Brewing your experience...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <span class="logo-icon"><i class="fas fa-mug-hot"></i></span>
+                <span class="logo-text">HANGO</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="map.html">Explore</a></li>
+                <li><a href="user-recommendations.html">Match</a></li>
+                <li><a href="social-tables.html">Social</a></li>
+                <li><a href="user-profile.html">Profile</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-background"></div>
+        <div class="hero-content">
+            <div class="floating-coffee">
+                <div class="coffee-cup">
+                    <div class="cup-body"></div>
+                    <div class="cup-handle"></div>
+                    <div class="steam steam-1"></div>
+                    <div class="steam steam-2"></div>
+                    <div class="steam steam-3"></div>
+                </div>
+            </div>
+            <h1 class="hero-title">Discover Your Perfect<br><span class="gradient-text">Coffee Moment</span></h1>
+            <p class="hero-subtitle">Find premium cafés near you, explore menus, and experience the art of coffee</p>
+            
+            <div class="search-container">
+                <div class="search-box">
+                    <input type="text" placeholder="Search cafés, locations, or vibes..." class="search-input">
+                    <button class="location-btn">
+                        <span class="location-icon"><i class="fas fa-location-dot"></i></span>
+                    </button>
+                    <button class="search-btn">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow"></div>
+        </div>
+    </section>
+
+    <!-- Featured Cafés Carousel -->
+    <section class="featured-section">
+        <div class="container">
+            <h2 class="section-title">Featured Cafés</h2>
+            <div class="carousel-3d">
+                <div class="carousel-track">
+                    <div class="cafe-card-3d">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600" alt="Café">
+                            <div class="card-badge">Premium</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Artisan Brew House</h3>
+                            <div class="card-meta">
+                                <span class="rating">⭐ 4.8</span>
+                                <span class="distance">0.5 km</span>
+                            </div>
+                            <p class="card-description">Specialty coffee with artisanal pastries</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cafe-card-3d">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=600" alt="Café">
+                            <div class="card-badge">New</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>Mocha Dreams</h3>
+                            <div class="card-meta">
+                                <span class="rating">⭐ 4.9</span>
+                                <span class="distance">1.2 km</span>
+                            </div>
+                            <p class="card-description">Modern café with rooftop seating</p>
+                        </div>
+                    </div>
+                    
+                    <div class="cafe-card-3d">
+                        <div class="card-image">
+                            <img src="https://images.unsplash.com/photo-1559305616-3b04e37e3b60?w=600" alt="Café">
+                            <div class="card-badge">Popular</div>
+                        </div>
+                        <div class="card-content">
+                            <h3>The Bean Collective</h3>
+                            <div class="card-meta">
+                                <span class="rating">⭐ 4.7</span>
+                                <span class="distance">2.1 km</span>
+                            </div>
+                            <p class="card-description">Cozy atmosphere, perfect for work</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Picks Near You -->
+    <section class="top-picks">
+        <div class="container">
+            <h2 class="section-title">Top Picks Near You</h2>
+            <div class="picks-grid">
+                <a href="cafe-details.html" class="pick-card">
+                    <div class="pick-image">
+                        <img src="https://images.unsplash.com/photo-1453614512568-c4024d13c247?w=600" alt="Café">
+                    </div>
+                    <div class="pick-overlay">
+                        <h3>Espresso Lane</h3>
+                        <p>⭐ 4.6 • 0.8 km</p>
+                    </div>
+                </a>
+                
+                <a href="cafe-details.html" class="pick-card">
+                    <div class="pick-image">
+                        <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600" alt="Café">
+                    </div>
+                    <div class="pick-overlay">
+                        <h3>Velvet Coffee Co.</h3>
+                        <p>⭐ 4.9 • 1.5 km</p>
+                    </div>
+                </a>
+                
+                <a href="cafe-details.html" class="pick-card">
+                    <div class="pick-image">
+                        <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600" alt="Café">
+                    </div>
+                    <div class="pick-overlay">
+                        <h3>Café Noir</h3>
+                        <p>⭐ 4.8 • 0.3 km</p>
+                    </div>
+                </a>
+                
+                <a href="cafe-details.html" class="pick-card">
+                    <div class="pick-image">
+                        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600" alt="Café">
+                    </div>
+                    <div class="pick-overlay">
+                        <h3>Golden Bean</h3>
+                        <p>⭐ 4.7 • 2.0 km</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title">Discover More</h2>
+            <div class="features-grid">
+                <a href="user-recommendations.html" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-lightbulb">💡</i>
+                    </div>
+                    <h3>Smart Match</h3>
+                    <p>AI-powered recommendations to find your perfect café based on mood, budget, and preferences</p>
+                    <span class="feature-cta">Try Now <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="social-tables.html" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Social Tables</h3>
+                    <p>Join themed gatherings, meet like-minded people, and share amazing café experiences</p>
+                    <span class="feature-cta">Explore <i class="fas fa-arrow-right"></i></span>
+                </a>
+                
+                <a href="map.html" class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3>Interactive Map</h3>
+                    <p>Explore cafés near you with our beautiful 3D map and real-time availability</p>
+                    <span class="feature-cta">Explore <i class="fas fa-arrow-right"></i></span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <span class="logo-icon"><i class="fas fa-mug-hot"></i></span>
+                    <span class="logo-text">HANGO</span>
+                </div>
+                <p class="footer-tagline">Discover the art of coffee, one café at a time</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts/icon-replacer.js"></script>
+    <script src="scripts/main.js"></script>
+    <script type="module">
+        import { initHomepage } from './scripts/load-cafes.js';
+        
+        // Initialize homepage with real-time café data
+        document.addEventListener('DOMContentLoaded', () => {
+            initHomepage();
+        });
+    </script>
+</body>
+</html>
+
+<script>
+// Hide loader when page is fully loaded
+window.addEventListener('load', function() {
+    const loader = document.getElementById('loader');
+    setTimeout(() => {
+        loader.classList.add('hidden');
+    }, 500); // Small delay to ensure smooth transition
+});
+
+// Fallback: Hide loader after 3 seconds even if page hasn't fully loaded
+setTimeout(() => {
+    const loader = document.getElementById('loader');
+    if (loader && !loader.classList.contains('hidden')) {
+        loader.classList.add('hidden');
+    }
+}, 3000);
+</script>
